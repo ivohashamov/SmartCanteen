@@ -1,12 +1,15 @@
 {
-  "name": "SmartCanteen",
+  "name": "smartcanteen",
   "version": "1.0.0",
   "description": "A simple CAP project.",
-  "repository": "<Add your repository here>",
+  "repository": {
+    "type": "git",
+    "url": "<Add your repository here>"
+  },
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@sap/cds": "^6",
+    "@sap/cds": "^6.3.2",
     "express": "^4"
   },
   "devDependencies": {
@@ -42,5 +45,8 @@
       "no-console": "off",
       "require-atomic-updates": "off"
     }
-  }
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": ""
 }
