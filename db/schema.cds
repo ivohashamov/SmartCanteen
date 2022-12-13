@@ -25,7 +25,7 @@ entity Tables {
     // seatsOccupied : Integer; //number of occupied seats -- service writes
     tableHorizontal : Boolean; // not ideal - any ideas? -> was my idea to allocate the seats at the tables (see also entity Seats)
     tableVertical : Boolean; // not ideal - any ideas? -> was my idea to allocate the seats at the tables (see also entity Seats)
-    seats : Association to many Seats;
+    // seats : Association to many Seats;
     canteen : Association to Canteens;
 }
 
@@ -47,7 +47,7 @@ entity Users {
     isManager : Boolean;
 }
 
-// WaitingTimes
+// Waiting times for queues missing
 
 //types
 
