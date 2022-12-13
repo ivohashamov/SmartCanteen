@@ -1,8 +1,6 @@
 namespace smartcanteen.db;
 using { cuid } from '@sap/cds/common';
 
-
-
 entity Canteens {
     key ID : Integer;
     name : String; //e.g. msg global canteen
@@ -15,6 +13,7 @@ entity Canteens {
 
 entity Queues {
     key ID : Integer;
+    description : String;
     canteen : Association to Canteens;
 }
 
@@ -28,7 +27,7 @@ entity Tables {
 
 entity Seats {
     key ID : Integer;
-    tablePosition : array of {
+    tablePosition : {
         row : Integer;
         column : Integer;
     };
@@ -42,19 +41,21 @@ entity Users : cuid {
     isManager : Boolean;
 }
 
+/** Occupancy data */
+
 entity Occupancies : cuid {
     date : Timestamp;
     count : Integer;
     canteen : Association to Canteens;
 }
 
-entity QueueCounts : cuid {
+entity QueueOccupancies : cuid {
     date : Timestamp;
     count : Integer;
 }
 
-entity OccupanciesTable : cuid {
-    seatOccupancies : many {
+entity OccupanciesTables : cuid {
+    seatOccupancies : array of {
         seat : Association to Seats;
         isOccupied : Boolean;
     };
