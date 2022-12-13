@@ -1,3 +1,8 @@
+namespace smartcanteen.db;
+using { cuid } from '@sap/cds/common';
+
+
+
 entity Canteens {
     key ID : Integer;
     name : String; //e.g. msg global canteen
@@ -6,72 +11,52 @@ entity Canteens {
     street : String;
     streetNumber : String; //int?
     postalCode: String; //int?
-    occupancies : many OccupancyCanteen;
-    // currentOccupancy : Integer; // or just Association to Occupancies? or nothing and service just provides it?
-    // averageOccupancy : many AverageCalc; //see types below -- or just Association?
 } //entity Canteens for covering the case that the solution is used with several canteens
 
 entity Queues {
     key ID : Integer;
-    queueCounts : many QueueCount; // or just Association? or nothing and service just provides it?
-    // currentWaitingTime : Time; //int? -- service writes
-    // averageWaitingTime : many AverageCalc;
     canteen : Association to Canteens;
 }
 
 entity Tables {
     key ID : Integer;
     numberOfSeats : Integer;
-    // seatsOccupied : Integer; //number of occupied seats -- service writes
-    tableHorizontal : Boolean; // not ideal - any ideas? -> was my idea to allocate the seats at the tables (see also entity Seats)
-    tableVertical : Boolean; // not ideal - any ideas? -> was my idea to allocate the seats at the tables (see also entity Seats)
-    // seats : Association to many Seats;
+    tableHorizontal : Boolean; // maybe not ideal - any ideas? -> was my idea to allocate the seats at the tables (see also entity Seats)
+    tableVertical : Boolean; // maybe not ideal - any ideas? -> was my idea to allocate the seats at the tables (see also entity Seats)
     canteen : Association to Canteens;
 }
 
 entity Seats {
     key ID : Integer;
-    tablePosition : {
+    tablePosition : array of {
         row : Integer;
         column : Integer;
     };
-    seatOccupied : Boolean;
     table : Association to Tables;
 }
 
-entity Users {
-    key ID : Integer;
+entity Users : cuid {
     name : String;
     mail : String;
     password : String; //we need to think about that -- hash etc.
     isManager : Boolean;
 }
 
-// Waiting times for queues missing
+entity Occupancies : cuid {
+    date : Timestamp;
+    count : Integer;
+    canteen : Association to Canteens;
+}
 
-//types
-
-type OccupancyCanteen {
+entity QueueCounts : cuid {
     date : Timestamp;
     count : Integer;
 }
 
-type QueueCount {
-    date : Timestamp;
-    count : Integer;
-}
-
-type AverageCalc {
-    rangeStart : Time;
-    rangeEnd : Time;
-    weekday : Weekday;
-    count: Integer;
-}
-
-type SeatOccupancy {
-    occupied : Boolean;
-}
-
-type Weekday : String enum {
-  Monday; Tuesday; Wednesday; Thursday; Friday; Saturday; Sunday;
+entity OccupanciesTable : cuid {
+    seatOccupancies : many {
+        seat : Association to Seats;
+        isOccupied : Boolean;
+    };
+    seatOccupanciesCount : Integer;
 }
