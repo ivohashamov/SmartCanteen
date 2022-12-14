@@ -1,2 +1,2 @@
-ID; name; openingTime; closingTime; street; streetNumber; postalCode
-1; msg global canteen; 11:00:00; 15:00:00; Maxstrasse; 143; 84398
+ID;name;openingTime;closingTime;street;streetNumber;postalCode
+1;msg global canteen;11:00:00;15:00:00;Maxstrasse;143;84398

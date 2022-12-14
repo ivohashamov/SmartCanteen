@@ -19,6 +19,7 @@ entity Queues {
 
 entity Tables {
     key ID : Integer;
+    description : String;
     numberOfSeats : Integer;
     tableHorizontal : Boolean; // maybe not ideal - any ideas? -> was my idea to allocate the seats at the tables (see also entity Seats)
     tableVertical : Boolean; // maybe not ideal - any ideas? -> was my idea to allocate the seats at the tables (see also entity Seats)
@@ -27,10 +28,8 @@ entity Tables {
 
 entity Seats {
     key ID : Integer;
-    tablePosition : {
-        row : Integer;
-        column : Integer;
-    };
+    tablePositionRow : Integer;
+    tablePositionColumn : Integer;
     table : Association to Tables;
 }
 
