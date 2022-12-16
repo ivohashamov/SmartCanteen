@@ -36,7 +36,7 @@ entity Seats {
 entity Users : cuid {
     name : String;
     mail : String;
-    password : String; //we need to think about that -- hash etc.
+    password : String; //we need to think about that -- hash etc. TO-DO
     isManager : Boolean;
 }
 
