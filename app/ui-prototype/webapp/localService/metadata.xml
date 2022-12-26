@@ -43,5 +43,7 @@
                 <Property Name="isOccupied" Type="Edm.Boolean"/>
             </ComplexType>
         </Schema>
+          <Schema Namespace="UsersService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+           </Schema>
     </edmx:DataServices>
 </edmx:Edmx>
