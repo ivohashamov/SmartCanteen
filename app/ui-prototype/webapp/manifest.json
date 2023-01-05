@@ -94,7 +94,7 @@
         "async": true,
         "viewPath": "ns.uiprototype.view",
         "controlAggregation": "pages",
-        "controlId": "app",
+        "controlId": "App",
         "clearControlAggregation": false
       },
       "routes": [
@@ -127,10 +127,10 @@
       }
     },
     "rootView": {
-      "viewName": "ns.uiprototype.view.App",
+      "viewName": "ns.uiprototype.view.Login",
       "type": "XML",
       "async": true,
-      "id": "App"
+      "id": "LoginPage"
     }
   }
 }

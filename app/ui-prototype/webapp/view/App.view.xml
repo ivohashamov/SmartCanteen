@@ -40,7 +40,17 @@
                         <content>
                             <Panel headerText="page1" class="sapUIResponsiveMargin" width="auto">
                                 <content>
-                                    <Button text="test1" class="sapUISmallMarginEnd" press=".onButtonPressed"/>
+                                    <VBox class="w3-row w3-display-middle w3-card-1">
+						<Text text="Smart Canteen" class="w3-xxlarge animated fadeInUp titleStyle"/>
+						<VBox class="w3-container w3-padding-10">
+							<Image class="w3-margin-top w3-margin-bottom" src="homePage.jpg"/>
+						</VBox>
+						<VBox class="w3-container w3-padding-10">
+							<Input value="{login>/userID}" placeholder="User ID" class="w3-input w3-border-0 w3-round-large"/>
+							<Input type="Password" value="{login>/password}" placeholder="Password" class="w3-input w3-border-0 w3-round-large"/>
+							<Button class="w3-btn w3-ripple w3-border-0 w3-round-large" text="Login" press="onUserLogin"/>
+						</VBox>
+					                </VBox>
                                 </content>
                             </Panel>
                         </content>
