@@ -22,7 +22,7 @@
                 "settings": {
                     "annotations": [],
                     "localUri": "localService/metadata.xml",
-                    "odataVersion": "4.0"
+                    "odataVersion": "2.0"
                 }
             }
         }
@@ -70,14 +70,14 @@
                 }
             },
             "": {
+              "type": "sap.ui.model.odata.v2.ODataModel",
+              "settings": {
+                "defaultOperationMode": "Server",
+                "defaultBindingMode": "TwoWay",
+                "defaultCountMode": "Inline"
+              },
                 "dataSource": "mainService",
-                "preload": true,
-                "settings": {
-                    "synchronizationMode": "None",
-                    "operationMode": "Server",
-                    "autoExpandSelect": true,
-                    "earlyRequests": true
-                }
+                "preload": true
             }
         },
         "resources": {
@@ -141,7 +141,7 @@
             }
         },
         "rootView": {
-            "viewName": "uiprototype.view.LoginPage",
+            "viewName": "ns.uiprototype.view.LoginPage",
             "type": "XML",
             "async": true,
             "id": "App"

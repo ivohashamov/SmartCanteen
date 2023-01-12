@@ -1,14 +1,11 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/model/json/JSONModel",
-	"../utils/Utility",
-	"sap/ui/model/Filter",
-	"sap/ui/model/FilterOperator",
-	"sap/ui/core/Fragment"
+	"./LoginBO"
 ], function(Controller, JSONModel, BO) {
 	"use strict";
 
-	return BaseController.extend("ns.uiprototype.controller.LoginPage", {
+	return Controller.extend("ns.uiprototype.controller.LoginPage", {
 		onInit: function() {
 			this.getView().setModel(new JSONModel({}), "login");
 		},
@@ -28,23 +25,5 @@ sap.ui.define([
 		}
 
 	});
-}
-, function(Utility, JSONModel, Filter, FilterOperator, Fragment) {
-	"use strict";
-	return {
-		loginUser: function(oModel, Odata) {
-			var aFilter = [];
-			aFilter.push(new Filter("Id", FilterOperator.EQ, Odata.name));
-			aFilter.push(new Filter("Password", FilterOperator.EQ, Odata.password));
-			return this.readData(oModel, "/UserSet", {
-				filters: aFilter
-			});
-		},
-		submitData: function(oModel, sPath, aData) {
-			return Utility.odataCreate(oModel, sPath, aData);
-		},
-		readData: function(oModel, sPath, aParameters) {
-			return Utility.odataRead(oModel, sPath, aParameters);
-		}
-	};
 });
+

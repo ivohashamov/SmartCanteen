@@ -3,20 +3,32 @@ div.nav {
     float: right;
     vertical-align: middle;
 }
-w3-backGround {
+.w3-backGround {
     background-image: url("homePage.jpg");
+    background-position:center ;
+    background-repeat: no-repeat;
     }
     
     .titleStyle {
-        font-style:bold;
+        font-style:italic ;
         font-family: arial, sans-serif; 
         font-weight: 600;
-        color : SlateBlue;
-        background-color: Orange;
+        color : ghostwhite;
+        
     }
     .imageDisplayBlock {
         display: block;
     }
+    .button {
+        margin-left: 25%;
+        margin-top: 12%;
+        top:20%;
+        border:none; 
+        border-radius:10px; 
+        padding:15px;
+        min-height:30px; 
+        min-width: 120px;
+      }
     
     /* W3.CSS 4.15 December 2020 by Jan Egil and Borge Refsnes */
     html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
