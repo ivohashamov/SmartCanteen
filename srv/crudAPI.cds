@@ -7,6 +7,7 @@ using { smartcanteen.db as data } from '../db/schema';
 
 
 service APIService @(path:'/API') {
+  entity Users as projection on data.Users;
   entity Occupancies as projection on data.Occupancies;
   entity QueueOccupancies as projection on data.QueueOccupancies;
   entity OccupanciesTables as projection on data.OccupanciesTables;
