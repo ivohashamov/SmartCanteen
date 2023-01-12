@@ -16,7 +16,7 @@ sap.ui.define([
 			BO.loginUser(oModel, oData)
 				.then(function(oResponse) {
 					//navigate to
-					sap.ui.getCore().setModel(new JSONModel(oResponse.results[0]), "User");
+					sap.ui.getCore().setModel(new JSONModel(oResponse.results[0]), "Users");
 					that.getOwnerComponent().getRouter().navTo("overview");
 				})
 				.fail(function(oError) {

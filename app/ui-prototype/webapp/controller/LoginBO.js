@@ -9,9 +9,9 @@ sap.ui.define([
 	return {
 		loginUser: function(oModel, Odata) {
 			var aFilter = [];
-			aFilter.push(new Filter("Id", FilterOperator.EQ, Odata.userID));
-			aFilter.push(new Filter("Password", FilterOperator.EQ, Odata.password));
-			return this.readData(oModel, "/UserSet", {
+			aFilter.push(new Filter("name", FilterOperator.EQ, Odata.userID));
+			aFilter.push(new Filter("password", FilterOperator.EQ, Odata.password));
+			return this.readData(oModel, "/Users", {
 				filters: aFilter
 			});
 		},
