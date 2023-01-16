@@ -51,12 +51,13 @@ entity Occupancies : cuid {
 entity QueueOccupancies : cuid {
     date : Timestamp;
     count : Integer;
+    queue : Association to Queues;
 }
 
 entity OccupanciesTables : cuid {
+    date : Timestamp;
     seatOccupancies : array of {
         seat : Association to Seats;
         isOccupied : Boolean;
-    };
-    seatOccupanciesCount : Integer;
+    }
 }
