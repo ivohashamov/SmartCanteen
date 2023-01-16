@@ -3,3 +3,4 @@
 - service returning current occupancies of all seats at a certain table in a certain canteen -> OData Query
 - service returning estimated waiting time at a queue -> service
 - service returning estimated occupancies for a week -> service/ML/analytics
+- storing the data according to the mode

@@ -45,7 +45,8 @@ entity Users : cuid {
 entity Occupancies : cuid {
     date : Timestamp;
     count : Integer;
-    canteen : Association to Canteens;
+    id : Integer;
+    mode : String;
 }
 
 entity QueueOccupancies : cuid {
