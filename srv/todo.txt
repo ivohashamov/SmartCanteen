@@ -1,0 +1,5 @@
+- service returning current occupancy of a certain canteen -> OData Query DONE
+- service returning current occupancy of a certain queue in a certain canteen -> OData Query
+- service returning current occupancies of all seats at a certain table in a certain canteen -> OData Query
+- service returning estimated waiting time at a queue -> service
+- service returning estimated occupancies for a week -> service/ML/analytics
