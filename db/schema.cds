@@ -45,7 +45,7 @@ entity Users : cuid {
 entity Occupancies : cuid {
     date : Timestamp;
     count : Integer;
-    id : Integer;
+    entity_id : Integer;
     mode : String;
 }
 
