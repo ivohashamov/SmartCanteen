@@ -1,71 +1,9 @@
-<mvc:View controllerName="ns.uiprototype.controller.App" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt" displayBlock="true" xmlns="sap.m">
-    <tnt:ToolPage id="toolPage">
-        <tnt:header>
-            <tnt:ToolHeader>
-                <Button id="sideNavigationToggleButton" icon="sap-icon://menu2" type="Transparent" press=".onSideNavButtonPress">
-                    <layoutData>
-                        <OverflowToolbarLayoutData priority="NeverOverflow" />
-                    </layoutData>
-                </Button>
-                <ToolbarSpacer>
-					<layoutData>
-						<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px" />
-					</layoutData>
-				</ToolbarSpacer>
-                <Button class="sapUiSmallMargin" text="Alan Smith" type="Transparent" press=".handleUserNamePress" ariaHasPopup="Menu">
-					<layoutData>
-						<OverflowToolbarLayoutData priority="NeverOverflow" />
-					</layoutData>
-				</Button>
-                
-            </tnt:ToolHeader>
-        </tnt:header>
-        <tnt:sideContent>
-            <tnt:SideNavigation id="sideNavigation" expanded="true" selectedKey="page1" itemSelect=".onItemSelect">
-                <tnt:NavigationList>
-                    <tnt:NavigationListItem key="page1" text="Overview" icon="sap-icon://employee" />
-                    <tnt:NavigationListItem key="page2" text="Settings" icon="sap-icon://employee" />
-                </tnt:NavigationList>
-                <tnt:fixedItem>
-                    <tnt:NavigationList>
-                        <tnt:NavigationListItem text="Help" icon="sap-icon://employee" />
-                    </tnt:NavigationList>
-                </tnt:fixedItem>
-            </tnt:SideNavigation>
-        </tnt:sideContent>
-        <tnt:mainContents>
-            <NavContainer id="pageContainer" initialPage="page1">
-                <pages>
-                    <Page id="page1" title="Smart Canteen">
-                        <content>
-                            <Panel headerText="page1" class="sapUIResponsiveMargin" width="auto">
-                                <content>
-                                    <VBox class="w3-row w3-display-middle w3-card-1">
-						<Text text="Smart Canteen" class="w3-xxlarge animated fadeInUp titleStyle"/>
-						<VBox class="w3-container w3-padding-10">
-							<Image class="w3-margin-top w3-margin-bottom" src="homePage.jpg"/>
-						</VBox>
-						<VBox class="w3-container w3-padding-10">
-							<Input value="{login>/userID}" placeholder="User ID" class="w3-input w3-border-0 w3-round-large"/>
-							<Input type="Password" value="{login>/password}" placeholder="Password" class="w3-input w3-border-0 w3-round-large"/>
-							<Button class="w3-btn w3-ripple w3-border-0 w3-round-large" text="Login" press="onUserLogin"/>
-						</VBox>
-					                </VBox>
-                                </content>
-                            </Panel>
-                        </content>
-                    </Page>
-                    <Page id="page2" title="Smart Canteen">
-                        <content>
-                            <Panel headerText="page2" class="sapUIResponsiveMargin" width="auto">
-                                <content>
-                                    <Button text="test2" class="sapUISmallMarginEnd" press=".onButtonPressed"/>
-                                </content>
-                            </Panel>
-                        </content>
-                    </Page>
-                </pages>
-            </NavContainer>
-        </tnt:mainContents>
-    </tnt:ToolPage>
+<mvc:View
+		controllerName="ns.uiprototype.controller.App"
+		xmlns="sap.m"
+		xmlns:mvc="sap.ui.core.mvc"
+		displayBlock="true">
+<Shell>
+	<App id="app"/>
+</Shell>
 </mvc:View>

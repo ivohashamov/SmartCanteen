@@ -3,3 +3,9 @@ div.nav {
     float: right;
     vertical-align: middle;
 }
+
+.redLabel {
+    color:#AF003F;
+    font-size: 16px;
+    
+}

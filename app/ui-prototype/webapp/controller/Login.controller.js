@@ -13,6 +13,10 @@ sap.ui.define([
 			this.getView().setModel(new JSONModel({}), "login");
 		},
 		onUserLogin: function() {
+            //dummy navigation to next page
+            this.getOwnerComponent().getRouter().navTo("dashboard");
+            return
+
 			var oData = this.getView().getModel("login").getData();
 			var oModel = this.getView().getModel();
 			var that = this;
@@ -20,7 +24,7 @@ sap.ui.define([
 				.then(function(oResponse) {
 					//navigate to
 					sap.ui.getCore().setModel(new JSONModel(oResponse.results[0]), "User");
-					that.getOwnerComponent().getRouter().navTo("overview");
+					that.getOwnerComponent().getRouter().navTo("Dashboard");
 				})
 				.fail(function(oError) {
 					sap.m.MessageBox.error(JSON.parse(oError.responseText).error.message.value);

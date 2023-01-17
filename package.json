@@ -7,16 +7,16 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^6",
-    "express": "^4"
+    "express": "^4",
+    "sqlite3": "^5.1.4"
   },
   "devDependencies": {
     "@sap/ux-specification": "^1.102.14",
-    "sqlite3": "^5.0.4"
+    "sqlite3": "^5.1.4"
   },
   "scripts": {
     "start": "cds run",
-    "watch-ui-prototype": "cds watch --open ui-prototype/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-dashboard": "cds watch --open dashboard/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-ui-prototype": "cds watch --open ui-prototype/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "engines": {
     "node": "^16.15"
@@ -51,13 +51,12 @@
       "db": {
         "kind": "sqlite",
         "credentials": {
-          "database": "db.sqlite"
+          "database": "my.db"
         }
       }
     }
   },
   "sapux": [
-    "app/ui-prototype",
-    "app/dashboard"
+    "app/ui-prototype"
   ]
 }

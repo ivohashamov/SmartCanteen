@@ -1,0 +1,120 @@
+{
+	"timeline": {
+		"sap.app": {
+			"id": "ns.uiprototype.model.timeline",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "Timeline",
+			"header": {
+				"title": "Schedule for today",
+				"subTitle": "9:32 AM",
+				"status": {
+					"text": "3 of 3"
+				},
+				"actions": [
+					{
+						"type": "Navigation",
+						"parameters": {
+							"url": "/quickLinks"
+						}
+					}
+				]
+			},
+			"content": {
+				"data": {
+					"json": [
+						{
+							"Title": "Call Donna Mendez",
+							"Icon": "sap-icon://outgoing-call",
+							"Time":  "9:15 AM"
+						},
+						{
+							"Title": "Incidents Status - Online",
+							"Icon": "sap-icon://my-view",
+							"Time": "10:00 - 11:00"
+						},
+						{
+							"Title": "Site Visit - Peach Valley",
+							"Description": "San Joaquin valley",
+							"Icon": "sap-icon://appointment-2",
+							"Time": "12:00 - 17:00"
+						}
+					]
+				},
+				"item": {
+					"dateTime": {
+						"value": "{Time}"
+					},
+					"description": {
+						"value": "{Description}"
+					},
+					"title": {
+						"value": "{Title}"
+					},
+					"icon": {
+						"src": "{Icon}"
+					}
+				}
+			}
+		}
+	},
+    "analytical": {
+		"sap.app": {
+			"id": "ns.uiprototype.model.analytical",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "Analytical",
+			"header": {
+				"title": "Occupancy today"
+			},
+			"content": {
+				"chartType": "Line",
+				"title": {
+					"text": "Line chart"
+				},
+				"chartProperties": {
+					"legend": {
+						"visible": true,
+						"position": "Bottom",
+						"alignment": "Left"
+					},
+					"plotArea": {
+						"dataLabel": {
+							"visible": true,
+							"showTotal": true
+						}
+					}
+				},
+				"data": {
+					"request": {
+						"url": "http://localhost:4004/API/Occupancies",
+						"parameters": {
+							"$format": "json"
+						}
+					},
+					"path": "/value"
+				},
+				"dimensions": [{
+					"name": "Time",
+					"value": "{date}"
+				}],
+				"measures": [{
+					"name": "Occupancy",
+					"value": "{count}"
+				}],
+				"feeds": [{
+						"uid": "valueAxis",
+						"type": "Measure",
+						"values": ["Occupancy"]
+					},
+					{
+						"uid": "categoryAxis",
+						"type": "Dimension",
+						"values": ["Time"]
+				}]
+			}
+		}
+	}
+}
