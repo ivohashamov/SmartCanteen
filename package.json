@@ -7,7 +7,10 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^6",
-    "express": "^4"
+    "@sap/xssec": "^3.2.15",
+    "express": "^4",
+    "hdb": "^0.19.0",
+    "passport": "^0"
   },
   "devDependencies": {
     "sqlite3": "^5.0.4"
@@ -45,10 +48,23 @@
   },
   "cds": {
     "requires": {
+      "auth": { 
+        "kind": "dummy" },
       "db": {
-        "kind": "sqlite",
+        "kind": "sql",
         "credentials": {
           "database": "db.sqlite"
+        }
+      },
+      "[production]": {
+        "db": {
+          "kind": "hana-cloud"
+        },
+        "auth": {
+          "kind": "dummy"
+        },
+        "approuter": {
+          "kind": "cloudfoundry"
         }
       }
     }

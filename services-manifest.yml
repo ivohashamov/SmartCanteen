@@ -1,0 +1,12 @@
+# Generated services-manifest.yml based on template version 0.1.0
+# appName = SmartCanteen
+---
+create-services:
+# ------------------------------------------------------------
+  - name:   SmartCanteen-auth
+    broker: xsuaa
+    plan: application
+# ------------------------------------------------------------
+  - name:   SmartCanteen-db
+    broker: hanatrial  # 'hanatrial' on trial landscapes
+    plan: "hdi-shared"

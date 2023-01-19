@@ -1,0 +1,10 @@
+{
+  "scopes": [],
+  "attributes": [],
+  "role-templates": [],
+  "oauth2-configuration": {
+    "token-validity": 900, 
+    "redirect-uris": ["https://1584749btrial.authentication.us10.hana.ondemand.com","https://1584749btrial.authentication.us10.hana.ondemand.com/logout"], 
+    "credential-types": ["binding-secret","x509"]
+}
+}
