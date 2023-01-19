@@ -10,7 +10,6 @@ using { smartcanteen.db as data } from '../db/schema';
 
 
 service APIService @(path:'/APIv1') {
-  entity Occupancies as projection on data.Occupancies; // optional: @insertonly
-  entity QueueOccupancies as projection on data.QueueOccupancies; // optional: @insertonly
-  entity OccupanciesTables as projection on data.OccupanciesTables; // optional: @insertonly
+  @insertonly entity canteen as projection on data.CanteenOccupancies;
+  @insertonly entity queue as projection on data.QueueLengths;
 }
