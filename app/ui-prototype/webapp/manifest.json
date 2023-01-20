@@ -80,6 +80,10 @@
                     "autoExpandSelect": true,
                     "earlyRequests": true
                 }
+            },
+            "invoice": {
+                "type": "sap.ui.model.json.JSONModel",
+				"uri": "Invoices.json"
             }
         },
         "resources": {
@@ -123,7 +127,7 @@
                 },
                 {
                   "name": "login",
-                  "pattern": "",
+                  "pattern": "login",
                   "target": "login"
               }
             ],

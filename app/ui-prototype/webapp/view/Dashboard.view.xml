@@ -36,6 +36,7 @@
         <tnt:mainContents>
             <NavContainer id="pageContainer" initialPage="page1" style="background-color:red;">
                 <pages>
+                    <!--Not implemented: Provide a last 7 days, last month, last year-->
                     <Page id="page1" showHeader="false" style="background-color:red;">
                         <content style="background-color:red;">
                             <mvc:XMLView viewName="ns.uiprototype.view.Cards"/>
