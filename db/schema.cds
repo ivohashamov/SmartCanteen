@@ -44,13 +44,13 @@ entity Users : cuid {
 
 /** Occupancy data */
 
-entity CanteenOccupancies : cuid {
+entity CANTEENOCCUPANCIES : cuid {
     date : Timestamp;
     count : Integer;
     ID : Association to Canteens;
 }
 
-entity QueueLengths : cuid {
+entity QUEUELENGTHS : cuid {
     date : Timestamp;
     count : Integer;
     ID : Association to Queues;
