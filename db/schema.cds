@@ -47,13 +47,13 @@ entity Users : cuid {
 entity CANTEENOCCUPANCIES : cuid {
     date : Timestamp;
     count : Integer;
-    ID : Association to Canteens;
+    canteen : Association to Canteens;
 }
 
 entity QUEUELENGTHS : cuid {
     date : Timestamp;
     count : Integer;
-    ID : Association to Queues;
+    queue : Association to Queues;
 }
 
 /** Analytics data */
