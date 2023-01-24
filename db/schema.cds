@@ -48,7 +48,7 @@ entity CANTEENOCCUPANCIES : cuid {
     date : Timestamp;
     count : Integer;
     entity : Association to Canteens;
-    coordinates : {
+    coordinates : many {
         x : String;
         y : String;
         w : String;
@@ -60,7 +60,7 @@ entity QUEUELENGTHS : cuid {
     date : Timestamp;
     count : Integer;
     entity : Association to Queues;
-    coordinates : {
+    coordinates : many {
         x : String;
         y : String;
         w : String;
