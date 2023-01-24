@@ -17,7 +17,8 @@ entity Queues {
     canteen : Association to Canteens;
 }
 
-entity Tables {
+/** 
+ * entity Tables {
     key ID : Integer;
     description : String;
     numberOfSeats : Integer;
@@ -32,6 +33,7 @@ entity Seats {
     tablePositionColumn : Integer;
     table : Association to Tables;
 }
+ * */
 
 entity Users : cuid {
     name : String;
@@ -42,21 +44,39 @@ entity Users : cuid {
 
 /** Occupancy data */
 
-entity Occupancies : cuid {
+entity CANTEENOCCUPANCIES : cuid {
     date : Timestamp;
     count : Integer;
-    canteen : Association to Canteens;
+    entity : Association to Canteens;
+    coordinates : many {
+        x : String;
+        y : String;
+        w : String;
+        h : String;
+        };
 }
 
-entity QueueOccupancies : cuid {
+entity QUEUELENGTHS : cuid {
     date : Timestamp;
     count : Integer;
+    entity : Association to Queues;
+    coordinates : many {
+        x : String;
+        y : String;
+        w : String;
+        h : String;
+        };
 }
 
-entity OccupanciesTables : cuid {
-    seatOccupancies : array of {
-        seat : Association to Seats;
-        isOccupied : Boolean;
-    };
-    seatOccupanciesCount : Integer;
+/** Analytics data */
+/** maybe better solution in the future */
+
+entity CanteenAnalytics : cuid {
+    date : Timestamp;
+    ID : Association to Canteens;
+}
+
+entity QueueAnalytics : cuid {
+    date : Timestamp;
+    ID : Association to Queues;
 }
