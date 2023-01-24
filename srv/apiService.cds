@@ -10,6 +10,6 @@ using { smartcanteen.db as data } from '../db/schema';
 
 
 service APIService @(path:'/APIv1') {
-  @insertonly entity canteen as projection on data.CanteenOccupancies; //Endpoint is: <URL>/APIv1/canteen
-  @insertonly entity queue as projection on data.QueueLengths; //Endpoint is: <URL>/APIv1/queue
+  entity canteen as projection on data.CANTEENOCCUPANCIES; //Endpoint is: <SERVER-URL>/APIv1/canteen
+  entity queue as projection on data.QUEUELENGTHS; //Endpoint is: <SERVER-URL>/APIv1/queue
 }

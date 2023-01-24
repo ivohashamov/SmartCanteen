@@ -48,24 +48,14 @@
   },
   "cds": {
     "requires": {
-      "auth": { 
-        "kind": "dummy" },
-      "db": {
-        "kind": "sql",
-        "credentials": {
-          "database": "db.sqlite"
-        }
+      "auth": {
+        "kind": "dummy"
       },
-      "[production]": {
-        "db": {
-          "kind": "hana-cloud"
-        },
-        "auth": {
-          "kind": "dummy"
-        },
-        "approuter": {
-          "kind": "cloudfoundry"
-        }
+      "db": {
+        "kind": "hana-cloud"
+      },
+      "approuter": {
+        "kind": "cloudfoundry"
       }
     }
   }

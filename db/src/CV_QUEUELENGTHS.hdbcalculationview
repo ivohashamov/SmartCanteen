@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_QUEUELENGTHS" outputViewType="Projection" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" cacheInvalidationPeriod="NONE" enforceSqlExecution="false" propagateInstantiation="true">
+    <descriptions defaultDescription="QueueLengths"/>
+        <localVariables/>
+        <variableMappings/>
+        <dataSources>
+            <DataSource id="QUEUELENGTHS">
+                <resourceUri>SMARTCANTEEN_DB_QUEUELENGTHS</resourceUri>
+            </DataSource>
+        </dataSources>
+    <calculationViews>
+        <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+            <viewAttributes>
+                <viewAttribute id="DATE"/>
+                <viewAttribute id="COUNT"/>
+                <viewAttribute id="QUEUE_ID"/>
+            </viewAttributes>
+            <calculatedViewAttributes/>
+            <input node="QUEUELENGTHS">
+                <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
+                <mapping xsi:type="Calculation:AttributeMapping" target="COUNT" source="COUNT"/>
+                <mapping xsi:type="Calculation:AttributeMapping" target="QUEUE_ID" source="QUEUE_ID"/>
+            </input>
+        </calculationView>
+    </calculationViews>
+    <logicalModel id="Projection_1" ignoreMultipleOutputsForFilter="true">
+        <attributes>
+            <attribute id="date" order="1" displayAttribute="true" attributeHierarchyActive="false">
+                <keyMapping columnObjectName="Projection_1" columnName="DATE"/>
+            </attribute>
+            <attribute id="queue_ID" order="2" displayAttribute="true" attributeHierarchyActive="false">
+                <keyMapping columnObjectName="Projection_1" columnName="QUEUE_ID"/>
+            </attribute>
+        </attributes>
+        <calculatedAttributes/>
+        <baseMeasures>
+            <measure id="count" order="3" measureType="simple">
+    		    <descriptions defaultDescription="COUNT"/>
+    		<measureMapping columnObjectName="Projection_1" columnName="COUNT"/>
+    	</measure>
+        </baseMeasures>
+        <calculatedMeasures/>
+        <restrictedMeasures/>
+    </logicalModel>
+</Calculation:scenario>

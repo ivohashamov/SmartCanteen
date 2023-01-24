@@ -11,6 +11,6 @@ service browseService @(path:'/browse') {
   * @readonly entity Tables as projection on data.Tables;
   * @readonly entity Seats as projection on data.Seats;
   * */
-  @readonly entity CanteenOccupancies as projection on data.CanteenOccupancies;
-  @readonly entity QueueLengths as projection on data.QueueLengths;
+  @readonly entity CanteenOccupancies as projection on data.CANTEENOCCUPANCIES;
+  @readonly entity QueueLengths as projection on data.QUEUELENGTHS;
 }
