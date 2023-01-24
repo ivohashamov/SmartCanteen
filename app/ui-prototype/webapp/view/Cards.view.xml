@@ -6,10 +6,6 @@
 	xmlns:w="sap.ui.integration.widgets" 
 	xmlns:card="sap.f.cards"
 	xmlns:core="sap.ui.core">
-    <Label text="{
-						path: 'OccupiedTables>/count',
-						formatter: '.formatter.division'
-					}"/>
     <Panel width="auto">
         <content>
             <f:GridContainer>
@@ -23,7 +19,7 @@
                 <!--Live Queue length-->
                 <f:Card class="sapUIMediumMargin" width="300px">
                     <f:header>
-                        <card:Header title="Queue length"/>
+                        <card:Header title="Live queue length"/>
                     </f:header>
                     <f:content>
                         <VBox height="80px" class="sapUiSmallMargin" justifyContent="SpaceBetween">

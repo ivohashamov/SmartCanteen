@@ -5,12 +5,22 @@ sap.ui.define([
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
 	"sap/ui/core/Fragment"
-], function(Controller, JSONModel, BO) {
+], function(Controller, JSONModel) {
 	"use strict";
 
 	return Controller.extend("ns.uiprototype.controller.Login", {
 		onInit: function() {
 			this.getView().setModel(new JSONModel({}), "login");
+		},
+		onUserLogin2: function () {
+			var users = new JSONModel();
+			users.loadData("model/users.json");
+
+			this.getView().setModel(users, "users")
+			var oData = this.getView().getModel("login").getData();
+
+			this.loginUser(this.getView().getModel("users"), oData)
+
 		},
 		onUserLogin: function() {
             //dummy navigation to next page
@@ -29,18 +39,12 @@ sap.ui.define([
 				.fail(function(oError) {
 					sap.m.MessageBox.error(JSON.parse(oError.responseText).error.message.value);
 				});
-		}
-
-	});
-}
-, function(Utility, JSONModel, Filter, FilterOperator, Fragment) {
-	"use strict";
-	return {
+		},
 		loginUser: function(oModel, Odata) {
 			var aFilter = [];
-			aFilter.push(new Filter("Id", FilterOperator.EQ, Odata.name));
+			aFilter.push(new Filter("userID", FilterOperator.EQ, Odata.userID));
 			aFilter.push(new Filter("Password", FilterOperator.EQ, Odata.password));
-			return this.readData(oModel, "/UserSet", {
+			return this.readData(oModel, "/Users", {
 				filters: aFilter
 			});
 		},
@@ -50,5 +54,6 @@ sap.ui.define([
 		readData: function(oModel, sPath, aParameters) {
 			return Utility.odataRead(oModel, sPath, aParameters);
 		}
-	};
+
+	});
 });

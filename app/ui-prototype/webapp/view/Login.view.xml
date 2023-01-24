@@ -1,17 +1,15 @@
-<mvc:View controllerName="ns.uiprototype.controller.Login" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt" displayBlock="true" xmlns="sap.m">
-    <App id="app">
+<mvc:View controllerName="ns.uiprototype.controller.Login" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m">
+	<App id="app">
 		<pages>
 			<Page title="{i18n>title}" showHeader="false" class="w3-backGround" enableScrolling="false">
 				<content>
 					<VBox class="w3-row w3-display-middle w3-card-1">
-						<Text text="Smart Canteen" class="w3-xxlarge animated fadeInUp titleStyle"/>
-						<VBox class="w3-container w3-padding-10">
-							<Image class="w3-margin-top w3-margin-bottom" src="homePage.jpg"/>
-						</VBox>
+						<Text text="Smart Canteen.msg" class="w3-xxlarge animated fadeInUp titleStyle"/>
 						<VBox class="w3-container w3-padding-10">
 							<Input value="{login>/userID}" placeholder="User ID" class="w3-input w3-border-0 w3-round-large"/>
 							<Input type="Password" value="{login>/password}" placeholder="Password" class="w3-input w3-border-0 w3-round-large"/>
-							<Button class="w3-btn w3-ripple w3-border-0 w3-round-large" text="Login" press="onUserLogin"/>
+							<Button type="button" class="button" text="Login" press="onUserLogin"/>
 						</VBox>
 					</VBox>
 				</content>
