@@ -13,13 +13,13 @@
             <viewAttributes>
                 <viewAttribute id="DATE"/>
                 <viewAttribute id="COUNT"/>
-                <viewAttribute id="QUEUE_ID"/>
+                <viewAttribute id="ENTITY_ID"/>
             </viewAttributes>
             <calculatedViewAttributes/>
             <input node="QUEUELENGTHS">
                 <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
                 <mapping xsi:type="Calculation:AttributeMapping" target="COUNT" source="COUNT"/>
-                <mapping xsi:type="Calculation:AttributeMapping" target="QUEUE_ID" source="QUEUE_ID"/>
+                <mapping xsi:type="Calculation:AttributeMapping" target="ENTITY_ID" source="ENTITY_ID"/>
             </input>
         </calculationView>
     </calculationViews>
@@ -28,8 +28,8 @@
             <attribute id="date" order="1" displayAttribute="true" attributeHierarchyActive="false">
                 <keyMapping columnObjectName="Projection_1" columnName="DATE"/>
             </attribute>
-            <attribute id="queue_ID" order="2" displayAttribute="true" attributeHierarchyActive="false">
-                <keyMapping columnObjectName="Projection_1" columnName="QUEUE_ID"/>
+            <attribute id="entity_ID" order="2" displayAttribute="true" attributeHierarchyActive="false">
+                <keyMapping columnObjectName="Projection_1" columnName="ENTITY_ID"/>
             </attribute>
         </attributes>
         <calculatedAttributes/>
