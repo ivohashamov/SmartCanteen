@@ -48,12 +48,24 @@ entity CANTEENOCCUPANCIES : cuid {
     date : Timestamp;
     count : Integer;
     canteen : Association to Canteens;
+    coordinates : {
+        x : String;
+        y : String;
+        w : String;
+        h : String;
+        };
 }
 
 entity QUEUELENGTHS : cuid {
     date : Timestamp;
     count : Integer;
     queue : Association to Queues;
+    coordinates : {
+        x : String;
+        y : String;
+        w : String;
+        h : String;
+        };
 }
 
 /** Analytics data */
