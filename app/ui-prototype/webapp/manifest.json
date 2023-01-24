@@ -1,0 +1,154 @@
+{
+    "_version": "1.48.0",
+    "sap.app": {
+        "id": "ns.uiprototype",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.8.3",
+            "toolsId": "b4d8941f-a153-4eb4-96e9-e2d1ff6b0ce3"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/API/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "4.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.108.4",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {},
+                "sap.ui.layout": {},
+				"sap.ui.integration": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ns.uiprototype.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "invoice": {
+                "type": "sap.ui.model.json.JSONModel",
+				"uri": "Invoices.json"
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "config": {
+			"sample": {
+				"files": [
+					"CardsLayout.view.xml",
+					"CardsLayout.controller.js",
+					"model/cardManifests.json",
+					"componentCard/Component.js",
+					"componentCard/manifest.json",
+					"componentCard/View.view.xml",
+					"componentCard/ComponentCard.controller.js",
+                    "model/list.json",
+					"manifest.json"
+				]
+			}
+		},
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "ns.uiprototype.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false,
+                "path": "ns.uiprototype.view"
+            },
+            "routes": [
+                {
+                    "name": "dashboard",
+                    "pattern": "dashboard",
+                    "target": "dashboard"
+                },
+                {
+                  "name": "login",
+                  "pattern": "login",
+                  "target": "login"
+              }
+            ],
+            "targets": {
+                "login": {
+                    "viewType": "XML",
+                    "viewId": "login",
+                    "viewName": "Login"
+                },
+                "dashboard": {
+                    "viewType": "XML",
+                    "viewId": "dashboard",
+                    "viewName": "Dashboard"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "ns.uiprototype.view.Login",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}

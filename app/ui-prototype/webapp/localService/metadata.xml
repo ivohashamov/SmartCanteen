@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="APIService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="Occupancies" EntityType="APIService.Occupancies"/>
+                <EntitySet Name="QueueOccupancies" EntityType="APIService.QueueOccupancies"/>
+                <EntitySet Name="OccupanciesTables" EntityType="APIService.OccupanciesTables"/>
+            </EntityContainer>
+            <EntityType Name="Occupancies">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="date" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="count" Type="Edm.Int32"/>
+                <Property Name="canteen_ID" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="QueueOccupancies">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="date" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="count" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="OccupanciesTables">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="seatOccupancies" Type="Collection(APIService.OccupanciesTables_seatOccupancies)" Nullable="false"/>
+                <Property Name="seatOccupanciesCount" Type="Edm.Int32"/>
+            </EntityType>
+            <ComplexType Name="OccupanciesTables_seatOccupancies">
+                <Property Name="seat_ID" Type="Edm.Int32"/>
+                <Property Name="isOccupied" Type="Edm.Boolean"/>
+            </ComplexType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
