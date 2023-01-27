@@ -14,3 +14,4 @@ service APIService @(path:'/APIv1') {
   entity queue as projection on data.QUEUELENGTHS; //Endpoint is: <SERVER-URL>/APIv1/queue
   entity user as projection on data.Users;
 }
+

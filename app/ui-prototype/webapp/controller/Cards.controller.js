@@ -34,7 +34,7 @@ sap.ui.define([
             var query2 = jQuery.ajax({
                 type: "GET", 
                 contentType: "application/json",
-                url:"http://localhost:4004/APIv1/canteen",
+                url:"http://localhost:4004/browse/Canteens",
                 success: function(data, status) {
                     oOccupiedTablesModel.setData(data["value"][0])
                 }
@@ -46,7 +46,7 @@ sap.ui.define([
             var query2 = jQuery.ajax({
                 type: "GET", 
                 contentType: "application/json",
-                url:"http://localhost:4004/browse/Tables?$apply=aggregate(numberOfSeats with sum as count)",
+                url:"http://localhost:4004/APIv1/canteen",
                 success: function(data, status) {
                     oTotalTablesModel.setData(data["value"][0])
                 }

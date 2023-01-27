@@ -9,6 +9,7 @@ entity Canteens {
     street : String;
     streetNumber : String; //int?
     postalCode: String; //int?
+    capacity : Integer default 20;
 } //entity Canteens for covering the case that the solution is used with several canteens
 
 entity Queues {
