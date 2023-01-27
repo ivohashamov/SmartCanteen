@@ -72,15 +72,15 @@ entity QUEUELENGTHS : cuid {
 /** Analytics data */
 /** maybe better solution in the future */
 
-entity CanteenAnalytics : cuid {
+entity occupanciesAnalytics : cuid {
     date : Timestamp;
     ID : Association to Canteens;
-    /** Providing data of the last week (so Monday, tuesday, wednesday, thursday, friday) */
+    /** Providing nalytics data of the respective opening hour of the canteen */
     data : many {
-        mon : Integer;
-        tue : Integer;
-        wed : Integer;
-        thu : Integer;
-        fri : Integer;
+        _11 : Integer;
+        _12 : Integer;
+        _13 : Integer;
+        _14 : Integer;
+        _15 : Integer;
         };
 }

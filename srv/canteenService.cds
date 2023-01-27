@@ -10,4 +10,5 @@ service canteenService @(path:'/API_front') {
   entity canteen as projection on data.Canteens;
   entity canteenOccupancies as projection on data.CANTEENOCCUPANCIES;
   entity queueLengths as projection on data.QUEUELENGTHS;
+  entity analytics as projection on data.occupanciesAnalytics;
 }
