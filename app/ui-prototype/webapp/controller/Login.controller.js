@@ -1,59 +1,40 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/model/json/JSONModel",
+	"sap/m/MessageToast",
 	"../utils/Utility",
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
 	"sap/ui/core/Fragment"
-], function(Controller, JSONModel) {
+], function(Controller, JSONModel, MessageToast, Filter, FilterOperator, Fragment) {
 	"use strict";
 
 	return Controller.extend("ns.uiprototype.controller.Login", {
 		onInit: function() {
 			this.getView().setModel(new JSONModel({}), "login");
 		},
-		onUserLogin2: function () {
-			var users = new JSONModel();
-			users.loadData("model/users.json");
+		onUserLogin: async function () {
+			//get UI input model
+			var inputLoginModel = this.getView().getModel("login");
 
-			this.getView().setModel(users, "users")
-			var oData = this.getView().getModel("login").getData();
+			//get all users from database
+			var oData = []
+			await fetch('./model/users.json').then(response => response.json()).then(data => oData = data)
+			var oModel = new JSONModel(oData);
+			this.getView().setModel(oModel,"users");
+			var userMap = new Map(this.getView().getModel("users").getProperty("/users").map((obj) => [obj.name, obj.password]));
+			
+			//check if user extists and if password equals
+			if(userMap.has(inputLoginModel.getProperty("/userID"))
+			&& userMap.get(inputLoginModel.getProperty("/userID")) === inputLoginModel.getProperty("/password"))
+			{
+				this.getOwnerComponent().getRouter().navTo("dashboard");
+			}
+			else
+			{
+				MessageToast.show("Username or Password not correct!")
+			}
 
-			this.loginUser(this.getView().getModel("users"), oData)
-
-		},
-		onUserLogin: function() {
-            //dummy navigation to next page
-            this.getOwnerComponent().getRouter().navTo("dashboard");
-            return
-
-			var oData = this.getView().getModel("login").getData();
-			var oModel = this.getView().getModel();
-			var that = this;
-			BO.loginUser(oModel, oData)
-				.then(function(oResponse) {
-					//navigate to
-					sap.ui.getCore().setModel(new JSONModel(oResponse.results[0]), "User");
-					that.getOwnerComponent().getRouter().navTo("Dashboard");
-				})
-				.fail(function(oError) {
-					sap.m.MessageBox.error(JSON.parse(oError.responseText).error.message.value);
-				});
-		},
-		loginUser: function(oModel, Odata) {
-			var aFilter = [];
-			aFilter.push(new Filter("userID", FilterOperator.EQ, Odata.userID));
-			aFilter.push(new Filter("Password", FilterOperator.EQ, Odata.password));
-			return this.readData(oModel, "/Users", {
-				filters: aFilter
-			});
-		},
-		submitData: function(oModel, sPath, aData) {
-			return Utility.odataCreate(oModel, sPath, aData);
-		},
-		readData: function(oModel, sPath, aParameters) {
-			return Utility.odataRead(oModel, sPath, aParameters);
 		}
-
 	});
 });
