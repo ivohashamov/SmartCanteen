@@ -1,1 +1,1 @@
-using APIService as service from '../../srv/crudAPI';
+using APIService as service from '../../srv/apiService.cds';

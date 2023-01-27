@@ -19,7 +19,7 @@ sap.ui.define([
             var query = jQuery.ajax({
                 type: "GET", 
                 contentType: "application/json",
-                url:"http://localhost:4004/API/QueueOccupancies?$orderby=date desc",
+                url:"http://localhost:4004/APIv1/queue?$orderby=date desc",
                 success: function(data, status) {
                     oQueueOccupanciesModel.setData(data["value"][0])
                 },
@@ -34,7 +34,7 @@ sap.ui.define([
             var query2 = jQuery.ajax({
                 type: "GET", 
                 contentType: "application/json",
-                url:"http://localhost:4004/API/OccupanciesTables",
+                url:"http://localhost:4004/APIv1/canteen",
                 success: function(data, status) {
                     oOccupiedTablesModel.setData(data["value"][0])
                 }

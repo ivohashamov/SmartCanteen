@@ -70,10 +70,10 @@
                         <VBox height="80px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
                             <HBox justifyContent="flex-end">
 								<VBox width="190px">
-                                	<Label class="redLabel" text='{OccupiedTables>/seatOccupanciesCount}/{TotalTables>/count} free seats'/>
+                                	<Label class="redLabel" text='{OccupiedTables>/count}/{TotalTables>/count} free seats'/>
                                     <ProgressIndicator percentValue="{
                                         parts: [
-                                            {path:'OccupiedTables>/seatOccupanciesCount'}, 
+                                            {path:'OccupiedTables>/count'}, 
                                             {path:'TotalTables>/count'}],
                                         formatter: '.formatter.division100'
                                         }" showValue="false"/>

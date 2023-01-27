@@ -89,7 +89,7 @@
 				},
 				"data": {
 					"request": {
-						"url": "http://localhost:4004/API/Occupancies",
+						"url": "http://localhost:4004/APIv1/canteen",
 						"parameters": {
 							"$format": "json"
 						}
