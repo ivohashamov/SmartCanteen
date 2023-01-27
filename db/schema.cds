@@ -72,12 +72,15 @@ entity QUEUELENGTHS : cuid {
 /** Analytics data */
 /** maybe better solution in the future */
 
-entity CanteenAnalytics : cuid {
+entity occupanciesAnalytics : cuid {
     date : Timestamp;
     ID : Association to Canteens;
-}
-
-entity QueueAnalytics : cuid {
-    date : Timestamp;
-    ID : Association to Queues;
+    /** Providing nalytics data of the respective opening hour of the canteen */
+    data : many {
+        _11 : Integer;
+        _12 : Integer;
+        _13 : Integer;
+        _14 : Integer;
+        _15 : Integer;
+        };
 }

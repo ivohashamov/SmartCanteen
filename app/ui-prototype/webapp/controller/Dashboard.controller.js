@@ -55,11 +55,11 @@ sap.ui.define([
             },
             onButtonPressed: function () {
               
-              var theUrl = "http://localhost:4004/API/Occupancies"//?$orderby=date desc&$filter=canteen_ID eq 1&$top=1";
+              var theUrl = "http://1584749btrial-dev-smartcanteen-srv.cfapps.us10-001.hana.ondemand.com/API_front/canteenOccupancies?$orderby=date desc&$filter=entity_ID eq 1&$top=1";
               
               var xmlHttp = new XMLHttpRequest();
               //xmlHttp.responseType = "json";
-              xmlHttp.open( "GET", "http://localhost:4004/API/Occupancies", false); // false for synchronous request
+              xmlHttp.open( "GET", "http://1584749btrial-dev-smartcanteen-srv.cfapps.us10-001.hana.ondemand.com/API_front/canteenOccupancies", false); // false for synchronous request
               xmlHttp.send( null );
             
               MessageToast.show(JSON.stringify(JSON.parse(xmlHttp.responseText)["value"][0]));

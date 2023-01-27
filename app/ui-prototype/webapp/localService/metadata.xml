@@ -13,6 +13,16 @@
                 <EntitySet Name="QueueOccupancies" EntityType="APIService.QueueOccupancies"/>
                 <EntitySet Name="OccupanciesTables" EntityType="APIService.OccupanciesTables"/>
             </EntityContainer>
+             <EntityType Name="Users">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="name" Type="Edm.String"/>
+                <Property Name="mail" Type="Edm.String"/>
+                <Property Name="password" Type="Edm.String"/>
+                <Property Name="isManager" Type="Edm.Boolean"/>
+            </EntityType>
             <EntityType Name="Occupancies">
                 <Key>
                     <PropertyRef Name="ID"/>

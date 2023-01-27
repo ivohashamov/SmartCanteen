@@ -1,1 +1,1 @@
-using APIService as service from '../../srv/apiService.cds';
+using canteenService as service from '../../srv/canteenService';
