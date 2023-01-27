@@ -75,9 +75,12 @@ entity QUEUELENGTHS : cuid {
 entity CanteenAnalytics : cuid {
     date : Timestamp;
     ID : Association to Canteens;
-}
-
-entity QueueAnalytics : cuid {
-    date : Timestamp;
-    ID : Association to Queues;
+    /** Providing data of the last week (so Monday, tuesday, wednesday, thursday, friday) */
+    data : many {
+        mon : Integer;
+        tue : Integer;
+        wed : Integer;
+        thu : Integer;
+        fri : Integer;
+        };
 }
