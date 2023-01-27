@@ -19,7 +19,7 @@ sap.ui.define([
             var query = jQuery.ajax({
                 type: "GET", 
                 contentType: "application/json",
-                url:"http://localhost:4004/APIv1/queue?$orderby=date desc",
+                url:"http://localhost:4004/API_front/queueLengths?$orderby=date desc",
                 success: function(data, status) {
                     oQueueOccupanciesModel.setData(data["value"][0])
                 },
@@ -34,7 +34,7 @@ sap.ui.define([
             var query2 = jQuery.ajax({
                 type: "GET", 
                 contentType: "application/json",
-                url:"http://localhost:4004/browse/Canteens",
+                url:"http://localhost:4004/API_front/canteenOccupancies",
                 success: function(data, status) {
                     oOccupiedTablesModel.setData(data["value"][0])
                 }
@@ -46,16 +46,12 @@ sap.ui.define([
             var query2 = jQuery.ajax({
                 type: "GET", 
                 contentType: "application/json",
-                url:"http://localhost:4004/APIv1/canteen",
+                url:"http://localhost:4004/API_front/canteen",
                 success: function(data, status) {
                     oTotalTablesModel.setData(data["value"][0])
                 }
             })
             this.getView().setModel(oTotalTablesModel, "TotalTables")
-        },
-        resolveCardUrl: function (sUrl) {
-			return sap.ui.require.toUrl("ns/uiprototype/CardsLayout/" + sUrl);
-		}
-
+        }
     });
  });
