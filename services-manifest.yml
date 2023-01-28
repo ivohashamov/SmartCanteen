@@ -3,10 +3,6 @@
 ---
 create-services:
 # ------------------------------------------------------------
-  - name:   SmartCanteen-auth
-    broker: xsuaa
-    plan: application
-# ------------------------------------------------------------
   - name:   SmartCanteen-db
     broker: hanatrial  # 'hanatrial' on trial landscapes
     plan: "hdi-shared"

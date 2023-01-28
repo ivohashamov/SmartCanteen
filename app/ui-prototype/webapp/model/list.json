@@ -1,0 +1,29 @@
+{
+    "legend": {
+        "visible": true,
+        "position": "bottom",
+        "alignment": "topLeft"
+    },
+    "list": [
+        {
+            "date": "11:00",
+            "count": 20
+        },
+        {
+            "date": "11:30",
+            "count": 15
+        },
+        {
+            "date": "12:00",
+            "count": 17
+        },
+        {
+            "date": "12:30",
+            "count": 15
+        },
+        {
+            "date": "13:00",
+            "count": 12
+        }
+    ]
+}

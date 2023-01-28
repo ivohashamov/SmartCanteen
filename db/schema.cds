@@ -9,6 +9,7 @@ entity Canteens {
     street : String;
     streetNumber : String; //int?
     postalCode: String; //int?
+    capacity : Integer default 20;
 } //entity Canteens for covering the case that the solution is used with several canteens
 
 entity Queues {
@@ -48,7 +49,7 @@ entity CANTEENOCCUPANCIES : cuid {
     date : Timestamp;
     count : Integer;
     entity : Association to Canteens;
-    coordinates : {
+    coordinates : many {
         x : String;
         y : String;
         w : String;
@@ -60,7 +61,7 @@ entity QUEUELENGTHS : cuid {
     date : Timestamp;
     count : Integer;
     entity : Association to Queues;
-    coordinates : {
+    coordinates : many {
         x : String;
         y : String;
         w : String;
@@ -71,12 +72,15 @@ entity QUEUELENGTHS : cuid {
 /** Analytics data */
 /** maybe better solution in the future */
 
-entity CanteenAnalytics : cuid {
+entity occupanciesAnalytics : cuid {
     date : Timestamp;
     ID : Association to Canteens;
-}
-
-entity QueueAnalytics : cuid {
-    date : Timestamp;
-    ID : Association to Queues;
+    /** Providing nalytics data of the respective opening hour of the canteen */
+    data : many {
+        _11 : Integer;
+        _12 : Integer;
+        _13 : Integer;
+        _14 : Integer;
+        _15 : Integer;
+        };
 }
