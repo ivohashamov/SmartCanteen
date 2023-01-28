@@ -7,6 +7,7 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^6",
+    "@sap/hana-client": "^2.15.19",
     "@sap/xssec": "^3.2.15",
     "express": "^4",
     "hdb": "^0.19.0",
@@ -54,7 +55,10 @@
         "kind": "dummy"
       },
       "db": {
-        "kind": "hana-cloud"
+        "kind": "sqlite",
+        "credentials": {
+          "database": "my.db"
+        }
       },
       "approuter": {
         "kind": "cloudfoundry"

@@ -106,7 +106,12 @@
                         <VBox height="80px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
                             <HBox justifyContent="flex-end">
 								<VBox width="190px">
-                                	<Label class="redLabel" text='We predict this time..'/>
+                                	<Label class="redLabel" text="Recommendation is 
+                                    {
+                                        parts: [{path:'QueueOccupancies>/count'}, 
+                                        {value:1.5}],
+                                        formatter: '.formatter.additionTimeWithMultiplication'
+                                    }"/>
 								</VBox>
 								<HBox justifyContent="flex-end">
 									<Image src="images/clockIcon.png" width="50px"/>
@@ -115,6 +120,13 @@
                         </VBox>
                     </f:content>
                 </f:Card>
+                
+                <!--Past per day Occupancy-->
+				<w:Card manifest="{manifests>/analytical2}" action="onAction">
+                    <w:layoutData>
+                        <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                    </w:layoutData>
+                </w:Card>
 
             </f:GridContainer>
         </content>

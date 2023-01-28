@@ -1,7 +1,6 @@
 {
-    
-    "UserSet": {
-        "userID": "Christian",
-        "Password" : "123"
-    }
-}
+    "users": [{ 
+      "name": "John",
+      "password": "abc"
+      }]
+   }

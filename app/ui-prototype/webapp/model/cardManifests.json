@@ -89,7 +89,65 @@
 				},
 				"data": {
 					"request": {
-						"url": "http://localhost:4004/API/Occupancies",
+						"url": "http://localhost:4004/API_front/canteenOccupancies",
+						"parameters": {
+							"$format": "json"
+						}
+					},
+					"path": "/value"
+				},
+				"dimensions": [{
+					"name": "Time",
+					"value": "{date}"
+				}],
+				"measures": [{
+					"name": "Occupancy",
+					"value": "{count}"
+				}],
+				"feeds": [{
+						"uid": "valueAxis",
+						"type": "Measure",
+						"values": ["Occupancy"]
+					},
+					{
+						"uid": "categoryAxis",
+						"type": "Dimension",
+						"values": ["Time"]
+				}]
+			}
+		}
+	},
+	"analytical2": {
+		"sap.app": {
+			"id": "ns.uiprototype.model.analytical",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "Analytical",
+			"header": {
+				"title": "Occupancy today"
+			},
+			"content": {
+				"chartType": "Line",
+				"title": {
+					"text": "Line chart"
+				},
+				"chartProperties": {
+					"legend": {
+						"visible": true,
+						"position": "Bottom",
+						"alignment": "Left"
+					},
+					"plotArea": {
+						"dataLabel": {
+							"visible": true,
+							"showTotal": true
+						}
+					}
+				},
+				"data": {
+					"request": {
+						"url": "http://localhost:4004/API_front/analytics",
 						"parameters": {
 							"$format": "json"
 						}
