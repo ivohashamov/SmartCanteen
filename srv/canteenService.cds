@@ -5,6 +5,7 @@ using { smartcanteen.db as data } from '../db/schema';
  * */
 
 service canteenService @(path:'/API_front') {
+  /** @readonly */
   entity users as projection on data.Users;
   entity queue as projection on data.Queues;
   entity canteen as projection on data.Canteens;

@@ -75,7 +75,7 @@ entity QUEUELENGTHS : cuid {
 entity occupanciesAnalytics : cuid {
     date : Timestamp;
     ID : Association to Canteens;
-    /** Providing nalytics data of the respective opening hour of the canteen */
+    /** Providing Analytics data of the respective opening hour of the canteen */
     data : many {
         _11 : Integer;
         _12 : Integer;

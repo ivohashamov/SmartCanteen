@@ -57,7 +57,7 @@
       "db": {
         "kind": "sqlite",
         "credentials": {
-          "database": "my.db"
+          "database": "db.sqlite"
         }
       },
       "approuter": {

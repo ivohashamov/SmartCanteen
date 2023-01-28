@@ -2,6 +2,8 @@ using { smartcanteen.db as data } from '../db/schema';
 
 /** 
  * Add mockdata at ../db/data -> corresponding .csv file
+ * 
+ * ONLY FOR DEVELOPMENT PURPOSE
  * */
 
 service developmentService @(path:'/development') {
