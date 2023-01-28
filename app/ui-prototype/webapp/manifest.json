@@ -65,12 +65,6 @@
             "cozy": true
         },
         "models": {
-            "i18n": {
-                "type": "sap.ui.model.resource.ResourceModel",
-                "settings": {
-                    "bundleName": "ns.uiprototype.i18n.i18n"
-                }
-            },
             "": {
                 "dataSource": "mainService",
                 "preload": true,
@@ -80,10 +74,6 @@
                     "autoExpandSelect": true,
                     "earlyRequests": true
                 }
-            },
-            "invoice": {
-                "type": "sap.ui.model.json.JSONModel",
-				"uri": "Invoices.json"
             }
         },
         "resources": {

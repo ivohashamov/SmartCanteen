@@ -38,7 +38,7 @@ sap.ui.define([
               oPopover.openBy(event.getSource());
             },
             onSideNavButtonPress: function () {
-              var oToolPage = this.byId("toolPage");
+              var oToolPage = this.byId("dashboard");
               var bSideExpanded = oToolPage.getSideExpanded();
         
               this._setToggleButtonTooltip(bSideExpanded);
