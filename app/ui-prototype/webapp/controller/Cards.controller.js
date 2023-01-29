@@ -34,7 +34,7 @@ sap.ui.define([
             var query2 = jQuery.ajax({
                 type: "GET", 
                 contentType: "application/json",
-                url:"http://localhost:4004/API_front/canteenOccupancies",
+                url:"http://localhost:4004/API_front/canteenOccupancies?$orderby=date desc",
                 success: function(data, status) {
                     oOccupiedTablesModel.setData(data["value"][0])
                 }
@@ -52,6 +52,10 @@ sap.ui.define([
                 }
             })
             this.getView().setModel(oTotalTablesModel, "TotalTables")
+
+            //Analyctical card
+            var oVizFrame = this.oVizFrame = this.getView().byId("analyticalCard");
+            //oVizFrame
         }
     });
  });
