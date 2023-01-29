@@ -59,7 +59,7 @@ sap.ui.define([
               
               var xmlHttp = new XMLHttpRequest();
               //xmlHttp.responseType = "json";
-              xmlHttp.open( "GET", "http://1584749btrial-dev-smartcanteen-srv.cfapps.us10-001.hana.ondemand.com/API_front/canteenOccupancies", false); // false for synchronous request
+              xmlHttp.open( "GET", "localhost:4004/API_front/canteenOccupancies", false); // false for synchronous request
               xmlHttp.send( null );
             
               MessageToast.show(JSON.stringify(JSON.parse(xmlHttp.responseText)["value"][0]));
