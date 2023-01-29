@@ -4,12 +4,11 @@ version: 1.0.0
 description: "A simple CAP project."
 parameters:
   enable-parallel-deployments: true
-
-# build-parameters:
+  # build-parameters:
   # before-all:
-    # - builder: custom
-      # commands:
-        # - npx -p @sap/cds-dk cds build
+  # - builder: custom
+  # commands:
+  # - npx -p @sap/cds-dk cds build
 modules:
   - name: SmartCanteen-srv
     type: nodejs
@@ -28,7 +27,7 @@ modules:
 
   - name: SmartCanteen
     type: approuter.nodejs
-    path: gen/app # from cds.env.folders. Consider also cds.env.build.target -> gen/app
+    path: app # from cds.env.folders. Consider also cds.env.build.target -> gen/app
     parameters:
       keep-existing-routes: true
       disk-quota: 256M
