@@ -3,13 +3,15 @@ sap.ui.define([], function () {
 
 	return {
         division100AndSubtract: function (value1, value2) {
-            return (value2-value1)/value2 * 100;
+            var res = (value2-value1)/value2 * 100
+            return Math.max(0, res);
         },
         multiplication: function (value1, value2) {
             return value1*value2;
         },
         substraction: function(value1, value2) {
-            return value1-value2;
+            var res = value1-value2;
+            return Math.max(0, res);
         },
         additionTimeWithMultiplication: function (value1, value2) {
             var oldDateObj = new Date();

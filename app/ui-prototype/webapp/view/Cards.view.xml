@@ -17,7 +17,7 @@
                 </f:layoutS>-->
 
                 <!--Live Queue length-->
-                <f:Card class="sapUIMediumMargin" width="300px">
+                <f:Card id="LiveQueueLengthControl" class="sapUIMediumMargin" width="300px">
                     <f:header>
                         <card:Header title="Live queue length"/>
                     </f:header>
