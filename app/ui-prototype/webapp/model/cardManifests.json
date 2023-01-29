@@ -84,8 +84,13 @@
 						"dataLabel": {
 							"visible": true,
 							"showTotal": true
+						},
+						"primaryScale": {
+							"fixedRange": true,
+							"minValue": 0,
+							"maxValue": 20
 						}
-					}
+					}				
 				},
 				"data": {
 					"request": {
@@ -98,7 +103,9 @@
 				},
 				"dimensions": [{
 					"name": "Time",
-					"value": "{date}"
+					"dataType": "date",
+					"value": "{date}",
+					"formatOptions": "{source: {pattern: 'yyyy-MM-dd'}"
 				}],
 				"measures": [{
 					"name": "Occupancy",
@@ -156,7 +163,7 @@
 				},
 				"dimensions": [{
 					"name": "Time",
-					"value": "{date}"
+					"value": "{data}"
 				}],
 				"measures": [{
 					"name": "Occupancy",
