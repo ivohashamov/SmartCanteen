@@ -55,6 +55,7 @@ entity CANTEENOCCUPANCIES : cuid {
         w : String;
         h : String;
         };
+    weekday : String;
 }
 
 entity QUEUELENGTHS : cuid {
@@ -67,20 +68,29 @@ entity QUEUELENGTHS : cuid {
         w : String;
         h : String;
         };
+    weekday : String;
 }
 
 /** Analytics data */
 /** maybe better solution in the future */
+/** cql queries -- SQL style */
 
-entity occupanciesAnalytics : cuid {
+/** entity occupanciesAVGhours as select from CANTEENOCCUPANCIES {*};
+
+entity occupanciesTotalAVG as select from CANTEENOCCUPANCIES {
+    round(average(count),2) as average
+} group by entity.ID;
+
+
+entity occupanciesAVGweekdaysPerHour : cuid {
     date : Timestamp;
-    ID : Association to Canteens;
+    canteen : Association to Canteens;
     /** Providing Analytics data of the respective opening hour of the canteen */
-    data : many {
+    /** data : many {
         _11 : Integer;
         _12 : Integer;
         _13 : Integer;
         _14 : Integer;
         _15 : Integer;
         };
-}
+} */
