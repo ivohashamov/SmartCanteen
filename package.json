@@ -67,7 +67,10 @@
         }
       },
       "db": {
-        "kind": "hana-cloud"
+        "kind": "sqlite",
+        "credentials": {
+          "database": "my.db"
+        }
       }
     }
   },

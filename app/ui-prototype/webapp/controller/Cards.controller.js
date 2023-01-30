@@ -11,7 +11,16 @@ sap.ui.define([
     'sap/ui/core/Title'
  ], function (Controller, JSONModel, formatter, FlattenedDataset, FeedItem, Popover, VizFrame, ChartFormatter, Format, Title) {
     "use strict";
-    var hi = 0
+    var currentWeekday = 0
+    const weekdays = {
+        Monday: 1,
+        Tuesday:2,
+        Wednesday:3,
+        Thursday:4,
+        Friday:5,
+        Saturday:6,
+        Sunday:7
+    }
     return Controller.extend("ns.uiprototype.controller.Cards", {
         formatter: formatter,
         onInit: async function () {
@@ -78,14 +87,8 @@ sap.ui.define([
             //oVizFrame
         },
         updateAnalyticsCards: async function()  {
-            //SAP UI5 cards
-            var cardManifests = new JSONModel();
-            cardManifests.loadData("model/cardManifests.json");
-            this.getView().setModel(cardManifests, "manifests");
-
-            var dataModel = new JSONModel("./model/ByYearCity_sum.json");
-            this.getView().setModel(dataModel, "a2");
-
+            //Current Analytics
+            this.updateCurrentAnalyticsCard()
             var vizFrame = this.getView().byId("idVizFrame")
             vizFrame.setVizProperties({
                 plotArea: {
@@ -93,15 +96,100 @@ sap.ui.define([
                         fixedRange: true,
                         minValue: 0,
                         maxValue: 20
+                    },
+                    dataPointSize: {
+                        max: 40
+                    },
+                    dataLabel: {
+                        visible: true
                     }
+                },
+                legend : {
+                    visible: false
+                },
+                categoryAxis: {
+                    label : {visible: true}
+                },
+                title: {
+                    visible: false
+                }
+            })
+
+            //Past Analytics
+            var currentDate = new Date()
+            currentWeekday = currentDate.getDay()
+            this.updatePastAnalyticsCard(Object.keys(weekdays).find(key => weekdays[key] === currentWeekday))
+            var vizFrame = this.getView().byId("idVizFrame2")
+            vizFrame.setVizProperties({
+                plotArea: {
+                    primaryScale: {
+                        fixedRange: true,
+                        minValue: 0,
+                        maxValue: 20
+                    },
+                    dataPointSize: {
+                        max: 40
+                    },
+                    dataLabel: {
+                        visible: true
+                    }
+                },
+                legend : {
+                    visible: false
+                },
+                categoryAxis: {
+                    label : {visible: true}
                 },
                 title: {
                     visible: false
                 }
             })
         },
+        updateCurrentAnalyticsCard: async function() {
+            var oOccupiedTablesModel = new JSONModel();
+            var query2 = jQuery.ajax({
+                type: "GET", 
+                contentType: "application/json",
+                url:"http://localhost:4004/API_front/canteenOccupancies?$apply=filter(entity_ID eq 1 and day(date) eq " + new Date().getDate() + ")/groupby((hour),aggregate(count with average as averageCount))",
+                success: function(data, status) {
+                    if(data["value"].length > 0) {
+                        oOccupiedTablesModel.setData(data)
+                    }   
+                }
+            })
+            this.getView().setModel(oOccupiedTablesModel, "a1")
+        },
+        updatePastAnalyticsCard: async function(weekday)
+        {
+            this.getView().setModel(new JSONModel({'day': weekday}), "weekday");
+            var oOccupiedTablesModel = new JSONModel();
+            var query2 = jQuery.ajax({
+                type: "GET", 
+                contentType: "application/json",
+                url:"http://localhost:4004/API_front/canteenOccupancies?$apply=filter(entity_ID eq 1 and weekday eq '"+weekday+"')/groupby((hour),aggregate(count with average as averageCount))",
+                success: function(data, status) {
+                    if(data["value"].length > 0)
+                        oOccupiedTablesModel.setData(data)
+                }
+            })
+            this.getView().setModel(oOccupiedTablesModel, "a2")
+        },
+        onBeforePress: function () {
+            if(currentWeekday > 1) {
+                currentWeekday = currentWeekday - 1
+                var wDay = Object.keys(weekdays).find(key => weekdays[key] === currentWeekday)
+                this.updatePastAnalyticsCard(wDay)
+            }
+        },
+        onNextPress: function () {
+            if(currentWeekday < 5) {
+                currentWeekday = currentWeekday + 1
+                var wDay = Object.keys(weekdays).find(key => weekdays[key] === currentWeekday)
+                this.updatePastAnalyticsCard(wDay)
+            }
+        },
         onRefreshTriggered: async function () {
             await this.updateFioriCards()
-        }
+        },
     });
  });
