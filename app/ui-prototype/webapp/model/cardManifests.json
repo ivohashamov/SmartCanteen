@@ -84,8 +84,13 @@
 						"dataLabel": {
 							"visible": true,
 							"showTotal": true
+						},
+						"primaryScale": {
+							"fixedRange": true,
+							"minValue": 0,
+							"maxValue": 20
 						}
-					}
+					}				
 				},
 				"data": {
 					"request": {
@@ -98,6 +103,7 @@
 				},
 				"dimensions": [{
 					"name": "Time",
+					"dataType": "date",
 					"value": "{date}"
 				}],
 				"measures": [{
@@ -125,7 +131,7 @@
 		"sap.card": {
 			"type": "Analytical",
 			"header": {
-				"title": "Occupancy today"
+				"title": "Typical Occupancy"
 			},
 			"content": {
 				"chartType": "Line",
@@ -156,7 +162,7 @@
 				},
 				"dimensions": [{
 					"name": "Time",
-					"value": "{date}"
+					"value": "{data}"
 				}],
 				"measures": [{
 					"name": "Occupancy",

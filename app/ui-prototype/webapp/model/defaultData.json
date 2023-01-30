@@ -1,0 +1,18 @@
+{
+    "QueueOccupancies": {
+        "@odata.context": "$metadata#queue/$entity",
+        "ID": "ab5ba5dd-bc3a-4ab8-88b9-f08cc1ac6d6e",
+        "date": "2023-01-18T18:35:17.549Z",
+        "count": 0,
+        "entity_ID": null,
+        "coordinates": []
+    },
+    "OccupiedTables":{
+        "@odata.context": "$metadata#canteen/$entity",
+        "ID": "53aeb27c-b213-467c-9ca1-b7de61ac128d",
+        "date": "2023-01-15T18:35:17.549Z",
+        "count": 0,
+        "entity_ID": null,
+        "coordinates": []
+    }
+}
