@@ -1,8 +1,15 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
-    "../model/formatter"
- ], function (Controller, JSONModel, formatter) {
+    "../model/formatter",
+    'sap/viz/ui5/data/FlattenedDataset',
+    'sap/viz/ui5/controls/common/feeds/FeedItem',
+    'sap/viz/ui5/controls/Popover',
+    'sap/viz/ui5/controls/VizFrame',
+    'sap/viz/ui5/format/ChartFormatter',
+    'sap/viz/ui5/api/env/Format',
+    'sap/ui/core/Title'
+ ], function (Controller, JSONModel, formatter, FlattenedDataset, FeedItem, Popover, VizFrame, ChartFormatter, Format, Title) {
     "use strict";
     var hi = 0
     return Controller.extend("ns.uiprototype.controller.Cards", {
@@ -16,7 +23,7 @@ sap.ui.define([
             this.updateAnalyticsCards()
 
             //Set time interval for updating the cards
-            this._trigger = new sap.ui.core.IntervalTrigger(3 * 1000 /* refresh every 3sec */)
+            this._trigger = new sap.ui.core.IntervalTrigger(6 * 1000 /* refresh every x sec */)
             this._trigger.addListener(this.onRefreshTriggered, this);
         },
         updateFioriCards: async function() {
@@ -75,6 +82,23 @@ sap.ui.define([
             var cardManifests = new JSONModel();
             cardManifests.loadData("model/cardManifests.json");
             this.getView().setModel(cardManifests, "manifests");
+
+            var dataModel = new JSONModel("./model/ByYearCity_sum.json");
+            this.getView().setModel(dataModel, "a2");
+
+            var vizFrame = this.getView().byId("idVizFrame")
+            vizFrame.setVizProperties({
+                plotArea: {
+                    primaryScale: {
+                        fixedRange: true,
+                        minValue: 0,
+                        maxValue: 20
+                    }
+                },
+                title: {
+                    visible: false
+                }
+            })
         },
         onRefreshTriggered: async function () {
             await this.updateFioriCards()
