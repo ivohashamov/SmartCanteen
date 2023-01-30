@@ -55,7 +55,8 @@ entity CANTEENOCCUPANCIES : cuid {
         w : String;
         h : String;
         };
-    weekday : String;
+    weekday : String; //Should by retrieved by timestamp usually
+    hour : Integer;
 }
 
 entity QUEUELENGTHS : cuid {
@@ -68,7 +69,8 @@ entity QUEUELENGTHS : cuid {
         w : String;
         h : String;
         };
-    weekday : String;
+    weekday : String; //Should by retrieved by timestamp usually
+    hour : Integer;
 }
 
 /** Analytics data */
