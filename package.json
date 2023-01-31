@@ -7,13 +7,20 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^6",
-    "express": "^4"
+    "@sap/xssec": "^3.2.15",
+    "cds": "^0.2.0",
+    "express": "^4",
+    "hdb": "^0.19.0",
+    "passport": "^0"
   },
   "devDependencies": {
-    "sqlite3": "^5.0.4"
+    "@sap/ux-specification": "^1.102.14",
+    "sqlite3": "^5.1.4"
   },
   "scripts": {
-    "start": "cds run"
+    "start": "cds run",
+    "build": "cds build/all --clean;cp gen/srv/srv/csn.json srv/gen/;cp -r gen/db/src/gen db/src",
+    "watch-ui-prototype": "cds watch --open ui-prototype/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "engines": {
     "node": "^16.15"
@@ -42,5 +49,32 @@
       "no-console": "off",
       "require-atomic-updates": "off"
     }
-  }
+  },
+  "cds": {
+    "hana": {
+      "deploy-format": "hdbtable"
+    },
+    "requires": {
+      "auth": {
+        "kind": "dummy"
+      },
+      "approuter": {
+        "kind": "cloudfoundry"
+      },
+      "[hybrid]": {
+        "db": {
+          "kind": "hana-cloud"
+        }
+      },
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "database": "my.db"
+        }
+      }
+    }
+  },
+  "sapux": [
+    "app/ui-prototype"
+  ]
 }

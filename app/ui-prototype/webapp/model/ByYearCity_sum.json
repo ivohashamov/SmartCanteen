@@ -1,0 +1,44 @@
+{
+    "value": [
+        {
+            "ID": "01deddf1-4672-44f2-8b8f-7246441b04f8",
+            "Week": 1,
+            "date": "2023-01-15T18:35:17.549Z",
+            "count": 8,
+            "entity_ID": null,
+            "coordinates": []
+        },
+        {
+            "ID": "0eb799f7-1866-4e1e-a2e4-54d9972a6dbe",
+            "Week": 2,
+            "date": "2023-01-16T18:38:17.549Z",
+            "count": 12,
+            "entity_ID": null,
+            "coordinates": []
+        },
+        {
+            "ID": "0eb799f7-1866-4e1e-a2e4-54d9972a6dbe",
+            "Week": 2,
+            "date": "2023-01-17T18:39:17.549Z",
+            "count": 12,
+            "entity_ID": null,
+            "coordinates": []
+        },
+        {
+            "ID": "ace5b995-7382-4617-bd9a-f25aee874b7a",
+            "Week": 3,
+            "date": "2023-01-18T19:38:17.549Z",
+            "count": 9,
+            "entity_ID": null,
+            "coordinates": []
+        },
+        {
+            "ID": "b5d2442a-8635-44fa-9908-614fd5db4f41",
+            "Week": 4,
+            "date": "2023-01-19T18:36:17.549Z",
+            "count": 10,
+            "entity_ID": null,
+            "coordinates": []
+        }
+    ]
+}

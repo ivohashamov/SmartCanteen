@@ -1,0 +1,53 @@
+<mvc:View controllerName="ns.uiprototype.controller.Dashboard" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt" displayBlock="true" xmlns="sap.m">
+    <tnt:ToolPage id="dashboard">
+        <tnt:header>
+            <tnt:ToolHeader>
+                <Button id="sideNavigationToggleButton" icon="sap-icon://menu2" type="Transparent" press=".onSideNavButtonPress">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                </Button>
+                <ToolbarSpacer>
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px" />  
+					</layoutData>
+				</ToolbarSpacer>
+                <Button class="sapUiSmallMargin" text="" type="Transparent" ariaHasPopup="Menu">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow" />
+					</layoutData>
+				</Button>
+                <Image src="images/msgLogo.png" width="50px" />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:sideContent>
+            <tnt:SideNavigation id="sideNavigation" expanded="true" selectedKey="page1" itemSelect=".onItemSelect">
+                <tnt:NavigationList>
+                    <tnt:NavigationListItem key="page1" text="Dashboard" icon="sap-icon://employee" />
+                    <tnt:NavigationListItem key="page2" text="Settings" icon="sap-icon://settings" />
+                </tnt:NavigationList>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+        <tnt:mainContents>
+            <NavContainer id="pageContainer" initialPage="page1" style="background-color:red;">
+                <pages>
+                    <!--Not implemented: Provide a last 7 days, last month, last year-->
+                    <Page id="page1" showHeader="false" style="background-color:red;">
+                        <content style="background-color:red;">
+                            <mvc:XMLView viewName="ns.uiprototype.view.Cards"/>
+                        </content>
+                    </Page>
+                    <Page id="page2" title="Smart Canteen">
+                        <content>
+                            <Panel headerText="page2" class="sapUIResponsiveMargin" width="auto">
+                                <content>
+                                    <Button text="test2" class="sapUISmallMarginEnd" press=".onButtonPressed"/>
+                                </content>
+                            </Panel>
+                        </content>
+                    </Page>
+                </pages>
+            </NavContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
