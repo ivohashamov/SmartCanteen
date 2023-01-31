@@ -6,9 +6,9 @@ using { smartcanteen.db as data } from '../db/schema';
 
 service canteenService @(path:'/API_front') {
   /** @readonly */
-  entity users as projection on data.Users;
-  entity queue as projection on data.Queues;
-  entity canteen as projection on data.Canteens;
-  entity canteenOccupancies as projection on data.CANTEENOCCUPANCIES;
-  entity queueLengths as projection on data.QUEUELENGTHS;
+  @readonly entity users as projection on data.Users;
+  @readonly entity queue as projection on data.Queues;
+  @readonly entity canteen as projection on data.Canteens;
+  @readonly entity canteenOccupancies as projection on data.CANTEENOCCUPANCIES;
+  @readonly entity queueLengths as projection on data.QUEUELENGTHS;
 }
