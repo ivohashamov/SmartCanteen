@@ -102,7 +102,8 @@ sap.ui.define([
                     },
                     dataLabel: {
                         visible: true
-                    }
+                    },
+                    colorPalette: ["#AF003F"]
                 },
                 legend : {
                     visible: false
@@ -132,7 +133,8 @@ sap.ui.define([
                     },
                     dataLabel: {
                         visible: true
-                    }
+                    },
+                    colorPalette: ["#AF003F"]
                 },
                 legend : {
                     visible: false
