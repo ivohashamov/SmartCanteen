@@ -1,4 +1,19 @@
-<mvc:View controllerName="ns.uiprototype.controller.Dashboard" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt" displayBlock="true" xmlns="sap.m">
+<mvc:View
+    controllerName="ns.uiprototype.controller.Dashboard"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:tnt="sap.tnt"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:w="sap.ui.integration.widgets"
+    xmlns:card="sap.f.cards"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+>
     <tnt:ToolPage id="dashboard">
         <tnt:header>
             <tnt:ToolHeader>
@@ -8,15 +23,15 @@
                     </layoutData>
                 </Button>
                 <ToolbarSpacer>
-					<layoutData>
-						<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px" />  
-					</layoutData>
-				</ToolbarSpacer>
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px" />
+                    </layoutData>
+                </ToolbarSpacer>
                 <Button class="sapUiSmallMargin" text="" type="Transparent" ariaHasPopup="Menu">
-					<layoutData>
-						<OverflowToolbarLayoutData priority="NeverOverflow" />
-					</layoutData>
-				</Button>
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                </Button>
                 <Image src="images/msgLogo.png" width="50px" />
             </tnt:ToolHeader>
         </tnt:header>
@@ -34,14 +49,247 @@
                     <!--Not implemented: Provide a last 7 days, last month, last year-->
                     <Page id="page1" showHeader="false" style="background-color:red;">
                         <content style="background-color:red;">
-                            <mvc:XMLView viewName="ns.uiprototype.view.Cards"/>
+                            <!--<mvc:XMLView viewName="ns.uiprototype.view.Cards"/> -->
+                            <Panel width="auto">
+                                <content>
+                                    <f:GridContainer>
+                                        <f:layout>
+                                            <f:GridContainerSettings rowSize="0rem" columnSize="20rem" gap="1rem" />
+                                        </f:layout>
+
+                                        <!--Canteen: Current occupany Canteen-->
+                                        <f:Card id="card6" class="sapUIMediumMargin" width="300px" visible="true">
+                                            <f:header>
+                                                <card:Header title="Canteen: Current Occupancy" />
+                                            </f:header>
+                                            <f:content>
+                                                <VBox height="80px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
+                                                    <HBox justifyContent="flex-end">
+                                                        <HBox width="190px">
+                                                            <Label class="redLabel" text='{OccupiedTables>/count} persons in canteen' />
+                                                        </HBox>
+                                                        <HBox justifyContent="flex-end">
+                                                            <Image src="images/foodIcon.jpeg" width="70px" />
+                                                        </HBox>
+                                                    </HBox>
+                                                </VBox>
+                                            </f:content>
+                                        </f:Card>
+
+                                        <!--Live Occupancy Tables-->
+                                        <f:Card id="card3" class="sapUIMediumMargin" width="300px">
+                                            <f:header>
+                                                <card:Header title="Canteen: Available seats" />
+                                            </f:header>
+                                            <f:content>
+                                                <VBox height="80px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
+                                                    <HBox justifyContent="flex-end">
+                                                        <VBox width="190px">
+                                                            <Label
+                                                                class="redLabel"
+                                                                text="{
+                                        parts: [
+                                            {path:'TotalTables>/capacity'}, 
+                                            {path:'OccupiedTables>/count'}],
+                                        formatter: '.formatter.substraction'
+                                        } / {TotalTables>/capacity} free seats"
+                                                            />
+                                                            <ProgressIndicator
+                                                                percentValue="{
+                                        parts: [
+                                            {path:'OccupiedTables>/count'}, 
+                                            {path:'TotalTables>/capacity'}],
+                                        formatter: '.formatter.division100AndSubtract'
+                                        }"
+                                                                showValue="false"
+                                                            />
+                                                        </VBox>
+                                                        <HBox justifyContent="flex-end">
+                                                            <Image src="images/chairIcon.png" width="50px" />
+                                                        </HBox>
+                                                    </HBox>
+                                                </VBox>
+                                            </f:content>
+                                        </f:Card>
+
+                                        <!--Queue: Live Queue length-->
+                                        <f:Card id="card1" class="sapUIMediumMargin" width="300px" visible="false">
+                                            <f:header>
+                                                <card:Header title="Queue: Live length" />
+                                            </f:header>
+                                            <f:content>
+                                                <VBox height="80px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
+                                                    <HBox justifyContent="flex-end">
+                                                        <HBox width="190px">
+                                                            <Label class="redLabel" text='{QueueOccupancies>/count} persons in queue' />
+                                                        </HBox>
+                                                        <HBox justifyContent="flex-end">
+                                                            <Image src="images/personsIcon.png" width="70px" />
+                                                        </HBox>
+                                                    </HBox>
+                                                </VBox>
+                                            </f:content>
+                                        </f:Card>
+
+                                        <!--Normal per day Occupancy-->
+                                        <f:Card id="card7" class="sapUIMediumMargin" width="610px" height="333px">
+                                            <f:layoutData>
+                                                <f:GridContainerItemLayoutData columns="2" />
+                                            </f:layoutData>
+                                            <f:header>
+                                                <card:Header title="Canteen: Todays Occupancy" />
+                                            </f:header>
+                                            <f:content>
+                                                <VBox height="80px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
+                                                    <HBox justifyContent="flex-end">
+                                                        <VBox width="190px">
+                                                            <viz:VizFrame id="idVizFrame" height="225px" width="580px" busy="false" busyIndicatorDelay="1000" visible="true" uiConfig="{ 'applicationSet': 'fiori' }" vizType="column" legendVisible="true" title="">
+                                                                <viz:dataset>
+                                                                    <viz.data:FlattenedDataset data="{a1>/value}">
+                                                                        <viz.data:dimensions>
+                                                                            <viz.data:DimensionDefinition name="Hour" value="{hour}:00" />
+                                                                        </viz.data:dimensions>
+                                                                        <viz.data:measures>
+                                                                            <viz.data:MeasureDefinition group="1" name="Occupancy" value="{averageCount}" />
+                                                                            <!--<viz.data:MeasureDefinition group="1" name="Cost" value="{Cost}" />
+                                <viz.data:MeasureDefinition group="1" name="Units Sold" value="{Units Sold}" />-->
+                                                                        </viz.data:measures>
+                                                                    </viz.data:FlattenedDataset>
+                                                                </viz:dataset>
+                                                                <viz:feeds>
+                                                                    <viz.feeds:FeedItem id="valueAxisFeed" uid="valueAxis" type="Measure" values="Occupancy" />
+                                                                    <!--<viz.feeds:FeedItem id="valueAxisFeed2" uid="valueAxis" type="Measure" values="Cost" />
+                        <viz.feeds:FeedItem id="value3" uid="primaryValues" type="Dimension" values="Units Sold" />-->
+                                                                    <viz.feeds:FeedItem id="categoryAxisFeed" uid="categoryAxis" type="Dimension" values="Hour" />
+                                                                </viz:feeds>
+                                                            </viz:VizFrame>
+                                                        </VBox>
+                                                    </HBox>
+                                                </VBox>
+                                            </f:content>
+                                        </f:Card>
+
+                                        <!--Queue: Estimated Waiting time-->
+                                        <f:Card id="card2" class="sapUIMediumMargin" width="300px">
+                                            <f:header>
+                                                <card:Header title="Queue: Estimated wait time" />
+                                            </f:header>
+                                            <f:content>
+                                                <VBox height="80px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
+                                                    <HBox justifyContent="flex-end">
+                                                        <VBox width="190px">
+                                                            <Label
+                                                                class="redLabel"
+                                                                text="Waiting time is 
+                                    {
+                                        parts: [{path:'QueueOccupancies>/count'}, 
+                                        {value:1.5}],
+                                        formatter: '.formatter.multiplication'
+                                    } 
+                                    minutes"
+                                                            />
+                                                        </VBox>
+                                                        <HBox justifyContent="flex-end">
+                                                            <Image src="images/timeIcon.png" width="50px" />
+                                                        </HBox>
+                                                    </HBox>
+                                                </VBox>
+                                            </f:content>
+                                        </f:Card>
+
+                                        <!--Recommended Arrival Time-->
+                                        <!--Not implemented-->
+                                        <f:Card id="card4" class="sapUIMediumMargin" width="300px">
+                                            <f:header>
+                                                <card:Header title="Recommended Arrival Time" />
+                                            </f:header>
+                                            <f:content>
+                                                <VBox height="80px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
+                                                    <HBox justifyContent="flex-end">
+                                                        <VBox width="190px">
+                                                            <Label
+                                                                class="redLabel"
+                                                                text="Recommendation is 
+                                    {
+                                        parts: [{path:'QueueOccupancies>/count'}, 
+                                        {value:1.5}],
+                                        formatter: '.formatter.additionTimeWithMultiplication'
+                                    }"
+                                                            />
+                                                        </VBox>
+                                                        <HBox justifyContent="flex-end">
+                                                            <Image src="images/clockIcon.png" width="50px" />
+                                                        </HBox>
+                                                    </HBox>
+                                                </VBox>
+                                            </f:content>
+                                        </f:Card>
+
+                                        <!--Average 7 days Occupancy-->
+                                        <f:Card id="card5" class="sapUIMediumMargin" width="610px" height="333px">
+                                            <f:layoutData>
+                                                <f:GridContainerItemLayoutData columns="2" />
+                                            </f:layoutData>
+                                            <f:header>
+                                                <card:Header title="Canteen: Typical Occupancy on {weekday>/day}" />
+                                            </f:header>
+                                            <f:content>
+                                                <VBox height="80px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
+                                                    <HBox justifyContent="flex-end">
+                                                        <VBox width="190px">
+                                                            <viz:VizFrame id="idVizFrame2" height="225px" width="580px" busy="false" busyIndicatorDelay="1000" visible="true" uiConfig="{ 'applicationSet': 'fiori' }" vizType="column" legendVisible="true" title="">
+                                                                <viz:dataset>
+                                                                    <viz.data:FlattenedDataset data="{a2>/value}">
+                                                                        <viz.data:dimensions>
+                                                                            <viz.data:DimensionDefinition name="Hour" value="{hour}:00" />
+                                                                        </viz.data:dimensions>
+                                                                        <viz.data:measures>
+                                                                            <viz.data:MeasureDefinition group="1" name="Occupancy" value="{averageCount}" />
+                                                                            <!--<viz.data:MeasureDefinition group="1" name="Cost" value="{Cost}" />
+                                <viz.data:MeasureDefinition group="1" name="Units Sold" value="{Units Sold}" />-->
+                                                                        </viz.data:measures>
+                                                                    </viz.data:FlattenedDataset>
+                                                                </viz:dataset>
+                                                                <viz:feeds>
+                                                                    <viz.feeds:FeedItem id="valueAxisFeed3" uid="valueAxis" type="Measure" values="Occupancy" />
+                                                                    <!--<viz.feeds:FeedItem id="valueAxisFeed2" uid="valueAxis" type="Measure" values="Cost" />
+                        <viz.feeds:FeedItem id="value3" uid="primaryValues" type="Dimension" values="Units Sold" />-->
+                                                                    <viz.feeds:FeedItem id="categoryAxisFeed3" uid="categoryAxis" type="Dimension" values="Hour" />
+                                                                </viz:feeds>
+                                                            </viz:VizFrame>
+                                                        </VBox>
+                                                    </HBox>
+                                                    <HBox justifyContent="End" width="560px">
+                                                        <Button text="Before" press=".onBeforePress" />
+                                                        <Button text="Next" press=".onNextPress" />
+                                                    </HBox>
+                                                </VBox>
+                                            </f:content>
+                                        </f:Card>
+
+                                        <!--Past per day Occupancy
+                <w:Card manifest="{manifests>/analytical2}" action="onAction">
+                    <w:layoutData>
+                        <f:GridContainerItemLayoutData minRows="2" columns="2" />
+                    </w:layoutData>
+                </w:Card>-->
+                                    </f:GridContainer>
+                                </content>
+                            </Panel>
                         </content>
                     </Page>
                     <Page id="page2" title="Smart Canteen">
                         <content>
-                            <Panel headerText="page2" class="sapUIResponsiveMargin" width="auto">
+                            <Panel headerText="Dashboard Items" class="sapUIResponsiveMargin" width="auto">
                                 <content>
-                                    <Button text="test2" class="sapUISmallMarginEnd" press=".onButtonPressed"/>
+                                    <!--   <Button text="test2" class="sapUISmallMarginEnd" press=".onButtonPressed" />-->
+                                    <CheckBox id="myCheckBox" text="Live queue Length" selected="true" select="onCheckboxSelected" />
+                                    <CheckBox id="myCheckBox1" text="Wait time" selected="true" select="onCheckboxSelected"  />
+                                    <CheckBox id="myCheckBox2" text="Available seats" selected="true" select="onCheckboxSelected" />
+                                    <CheckBox id="myCheckBox3" text="Recommended Arrival Time" selected="true" select="onCheckboxSelected"  />
+                                    <CheckBox id="myCheckBox4" text="Occupancy Today" selected="true" select="onCheckboxSelected"  />
+                                    <CheckBox id="myCheckBox5" text="Current Occupancy" selected="true" select="onCheckboxSelected" />
+                                    <CheckBox id="myCheckBox6" text="Todays Occupancy" selected="true" select="onCheckboxSelected"  />
                                 </content>
                             </Panel>
                         </content>
