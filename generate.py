@@ -35,7 +35,7 @@ dates = [
     '2023-01-30T11:00:00.000000Z',
     '2023-01-31T11:00:00.000000Z',
     '2023-02-01T11:00:00.000000Z',
-#    '2023-02-02T11:00:00.000000Z',
+    '2023-02-02T11:00:00.000000Z',
 #    '2023-02-03T11:00:00.000000Z',
 ]
 
@@ -49,11 +49,11 @@ for date in dates:
         dateWithMinuteIncrement = dateInDateTimeObject + datetime.timedelta(minutes=minutes)
         hour = dateWithMinuteIncrement.hour
 
-        if (date=='2023-02-01T11:00:00.000000Z'):
+        if (date=='2023-02-02T11:00:00.000000Z'):
             if (minutes < 40):
                 canteenOccupancy = random.randrange(LOW_CAPACITY)
                 queueOccupancy = random.randrange(LOW_CAPACITY)
-            elif (minutes > 180):
+            elif (minutes > 160):
                 break
             else:
                 canteenOccupancy = random.randrange(MIDDLE_CAPACITY, HIGH_CAPACITY)
