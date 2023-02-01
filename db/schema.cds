@@ -69,8 +69,8 @@ entity analyticsHours : cuid {
 entity analyticsDays : cuid {
     date : Timestamp;
     canteen : Association to Canteens;
-    day : String;
     data : array of { 
+        day : String;
         hour: String;
         value: Integer;
         }
