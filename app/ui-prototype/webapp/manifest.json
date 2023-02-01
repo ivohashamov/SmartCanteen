@@ -17,12 +17,12 @@
         },
         "dataSources": {
             "mainService": {
-                "uri": "/v2/API_front/",
+                "uri": "/v4/API_front/",
                 "type": "OData",
                 "settings": {
                     "annotations": [],
                     "localUri": "localService/metadata.xml",
-                    "odataVersion": "2.0"
+                    "odataVersion": "4.0"
                 }
             }
         }
@@ -135,10 +135,10 @@
             }
         },
         "rootView": {
-            "viewName": "ns.uiprototype.view.Login",
+            "viewName": "ns.uiprototype.view.Dashboard",
             "type": "XML",
             "async": true,
-            "id": "App"
+            "id": "dashboard"
         }
     }
 }
