@@ -49,7 +49,7 @@ module.exports = function(){
                 {date: currentDate, canteen_ID: currentCanteen, data : newHourAnalytics}
             ])
 
-        let newDayAnalytics = await SELECT .columns `weekday, hour, avg(COUNT) as value` .from `SMARTCANTEEN_DB_CANTEENOCCUPANCIES` .where `ENTITY_ID = ${currentCanteen}` .groupBy `weekday, hour`;
+        let newDayAnalytics = await SELECT .columns `weekday as day, hour, avg(COUNT) as value` .from `SMARTCANTEEN_DB_CANTEENOCCUPANCIES` .where `ENTITY_ID = ${currentCanteen}` .groupBy `weekday, hour`;
 
         await INSERT.into (analyticsDays, 
             [
