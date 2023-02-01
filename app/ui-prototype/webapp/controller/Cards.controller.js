@@ -155,6 +155,9 @@ sap.ui.define([
                 url:"http://localhost:4004/API_front/canteenOccupancies?$apply=filter(entity_ID eq 1 and day(date) eq " + new Date().getDate() + ")/groupby((hour),aggregate(count with average as averageCount))",
                 success: function(data, status) {
                     if(data["value"].length > 0) {
+                        for (let i = 0; i< data["value"].length; i++) {
+                            data["value"][i]["averageCount"] = Math.floor(data["value"][i]["averageCount"])
+                        }
                         oOccupiedTablesModel.setData(data)
                     }   
                 }
@@ -171,7 +174,12 @@ sap.ui.define([
                 url:"http://localhost:4004/API_front/canteenOccupancies?$apply=filter(entity_ID eq 1 and weekday eq '"+weekday+"')/groupby((hour),aggregate(count with average as averageCount))",
                 success: function(data, status) {
                     if(data["value"].length > 0)
+                    {
+                        for (let i = 0; i< data["value"].length; i++) {
+                            data["value"][i]["averageCount"] = Math.floor(data["value"][i]["averageCount"])
+                        }
                         oOccupiedTablesModel.setData(data)
+                    }
                 }
             })
             this.getView().setModel(oOccupiedTablesModel, "a2")
