@@ -58,7 +58,7 @@
                                         </f:layout>
 
                                         <!--Canteen: Current occupany Canteen-->
-                                        <f:Card id="card6" class="sapUIMediumMargin" width="300px" visible="true">
+                                        <f:Card id="card6" class="sapUIMediumMargin" width="300px">
                                             <f:header>
                                                 <card:Header title="Canteen: Current Occupancy" />
                                             </f:header>

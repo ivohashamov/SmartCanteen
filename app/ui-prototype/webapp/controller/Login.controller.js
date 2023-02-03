@@ -133,8 +133,9 @@ sap.ui.define([
 			//  var aData =  oModel.read("/users", {
 			// 	filters: oFilter
 			// });
-
-			
+           
+			/// SOLUTION  IMPORTANT
+			// var oModel = this.getOwnerComponent().getModel(); 
 			
 			//   oBinding.attachDataReceived(function(oEvent) {
 
