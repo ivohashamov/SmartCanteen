@@ -11,8 +11,6 @@ sap.ui.define([
     return Controller.extend("ns.uiprototype.controller.Dashboard", {
       formatter: formatter,
       onInit: function () {
-      },
-      onAfterRendering: function () {
         //retrieve settingsModel
         var oStore = jQuery.sap.storage(jQuery.sap.storage.Type.local);
         var settingsModel = oStore.get("settingsModel");
@@ -30,7 +28,7 @@ sap.ui.define([
         //get the settings model
         var settingsModel = this.getView().getModel("settingsModel")
 
-        //and safe it persistant
+        //and safe it persistent
         var oStore = jQuery.sap.storage(jQuery.sap.storage.Type.local);
         oStore.put("settingsModel", settingsModel.getProperty("/"));
       },
