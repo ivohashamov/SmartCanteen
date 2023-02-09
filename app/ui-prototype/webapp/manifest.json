@@ -3,7 +3,6 @@
     "sap.app": {
         "id": "ns.uiprototype",
         "type": "application",
-        "i18n": "i18n/i18n.properties",
         "applicationVersion": {
             "version": "0.0.1"
         },
@@ -16,15 +15,6 @@
             "toolsId": "b4d8941f-a153-4eb4-96e9-e2d1ff6b0ce3"
         },
         "dataSources": {
-            "mainService": {
-                "uri": "/v4/API_front/",
-                "type": "OData",
-                "settings": {
-                    "annotations": [],
-                    "localUri": "localService/metadata.xml",
-                    "odataVersion": "4.0"
-                }
-            },
             "settingsModel": {
                 "uri": "model/settingsModel.json",
                 "type": "JSON"
@@ -69,16 +59,6 @@
             "cozy": true
         },
         "models": {
-            "": {
-                "dataSource": "mainService",
-                "preload": true,
-                "settings": {
-                    "synchronizationMode": "None",
-                    "operationMode": "Server",
-                    "autoExpandSelect": true,
-                    "earlyRequests": true
-                }
-            },
             "settingsModel": {
                 "type": "sap.ui.model.json.JSONModel",
                 "dataSource": "settingsModel"
@@ -119,22 +99,12 @@
             },
             "routes": [
                 {
-                    "name": "dashboard",
-                    "pattern": "dashboard",
-                    "target": "dashboard"
-                },
-                {
                   "name": "login",
                   "pattern": "login",
                   "target": "login"
               }
             ],
             "targets": {
-                "login": {
-                    "viewType": "XML",
-                    "viewId": "login",
-                    "viewName": "Login"
-                },
                 "dashboard": {
                     "viewType": "XML",
                     "viewId": "dashboard",

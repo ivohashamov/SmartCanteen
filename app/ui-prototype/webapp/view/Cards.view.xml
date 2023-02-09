@@ -69,16 +69,10 @@
                         <card:Header title="Queue: Live length" />
                     </f:header>
                     <f:content>
-                        <VBox height="80px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
-                            <HBox justifyContent="flex-end">
-                                <HBox width="190px">
-                                    <Label class="redLabel" text='{QueueOccupancies>/count} persons in queue' />
-                                </HBox>
-                                <HBox justifyContent="flex-end">
-                                    <Image src="images/personsIcon.png" width="70px" />
-                                </HBox>
-                            </HBox>
-                        </VBox>
+                        <HBox class="sapUiSmallMargin" height="80px">
+                            <Label class="redLabel" text='{QueueOccupancies>/count} persons in queue'/>
+                            <Image class="sapUiMediumMarginBegin" src="images/personsIcon.png" width="60px" />
+                        </HBox>
                     </f:content>
                 </f:Card>
 
@@ -116,25 +110,16 @@
                         <card:Header title="Queue: Estimated wait time" />
                     </f:header>
                     <f:content>
-                        <VBox height="80px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
-                            <HBox justifyContent="flex-end">
-                                <VBox width="190px">
-                                    <Label
-                                        class="redLabel"
-                                        text="Waiting time is 
+                        <HBox class="sapUiSmallMargin" height="80px">
+                            <Label class="redLabel" text="Wait time is 
                                     {
                                         parts: [{path:'QueueOccupancies>/count'}, 
                                         {value:1.5}],
                                         formatter: '.formatter.multiplication'
                                     } 
-                                    minutes"
-                                    />
-                                </VBox>
-                                <HBox justifyContent="flex-end">
-                                    <Image src="images/timeIcon.png" width="50px" />
-                                </HBox>
-                            </HBox>
-                        </VBox>
+                                    min" />
+                            <Image class="sapUiMediumMarginBegin" src="images/timeIcon.png" width="50px" />
+                        </HBox>
                     </f:content>
                 </f:Card>
 
@@ -144,24 +129,15 @@
                         <card:Header title="Recommended Arrival Time" />
                     </f:header>
                     <f:content>
-                        <VBox height="80px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
-                            <HBox justifyContent="flex-end">
-                                <VBox width="190px">
-                                    <Label
-                                        class="redLabel"
-                                        text="Recommendation is 
+                        <HBox class="sapUiSmallMargin" height="80px">
+                            <Label class="redLabel" text="Arrive at   
                                     {
                                         parts: [{path:'QueueOccupancies>/count'}, 
                                         {value:1.5}],
                                         formatter: '.formatter.additionTimeWithMultiplication'
-                                    }"
-                                    />
-                                </VBox>
-                                <HBox justifyContent="flex-end">
-                                    <Image src="images/clockIcon.png" width="50px" />
-                                </HBox>
-                            </HBox>
-                        </VBox>
+                                    }" />
+                            <Image class="sapUiMediumMarginBegin" src="images/clockIcon.png" width="50px" />
+                        </HBox>
                     </f:content>
                 </f:Card>
 
