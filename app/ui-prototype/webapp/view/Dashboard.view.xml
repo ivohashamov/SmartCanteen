@@ -61,8 +61,7 @@
                                     <CheckBox text="Canteen: Typical Occupancy" selected="{settingsModel>/card7}" select="onCheckboxSelected"  />
                                     <CheckBox text="Queue: Live length" selected="{settingsModel>/card3}" select="onCheckboxSelected" />
                                     <CheckBox text="Queue: Estimated wait time" selected="{settingsModel>/card5}" select="onCheckboxSelected"  />
-                                    <CheckBox text="Recommended Arrival Time" selected="{settingsModel>/card6}" select="onCheckboxSelected" />
-                                    
+                                    <CheckBox text="Recommended Arrival Time" selected="{settingsModel>/card6}" select="onCheckboxSelected" />     
                                 </content>
                             </Panel>
                         </content>

@@ -17,8 +17,6 @@ sap.ui.define([
         var oStore = jQuery.sap.storage(jQuery.sap.storage.Type.local);
         var settingsModel = oStore.get("settingsModel");
         this.getView().setModel(new JSONModel(settingsModel), "settingsModel")
-
-        //update settings
       },
       onItemSelect: function (oEvent) {
         var oItem = oEvent.getParameter("item");
@@ -26,19 +24,7 @@ sap.ui.define([
       },
       onSideNavButtonPress: function () {
         var oToolPage = this.byId("dashboard");
-        var bSideExpanded = oToolPage.getSideExpanded();
-
-        this._setToggleButtonTooltip(bSideExpanded);
-
         oToolPage.setSideExpanded(!oToolPage.getSideExpanded());
-      },
-      _setToggleButtonTooltip: function (bLarge) {
-        var oToggleButton = this.byId('sideNavigationToggleButton');
-        if (bLarge) {
-          oToggleButton.setTooltip('Large Size Navigation');
-        } else {
-          oToggleButton.setTooltip('Small Size Navigation');
-        }
       },
       onCheckboxSelected: function (oEvent) {
         //get the settings model
