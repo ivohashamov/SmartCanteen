@@ -6,10 +6,12 @@ using { smartcanteen.db as data } from '../db/schema';
  * ONLY FOR DEVELOPMENT PURPOSE
  * */
 
-service developmentService @(path:'/development') {
+service browseService @(path:'/development') {
   entity canteen as projection on data.Canteens;
   entity queue as projection on data.Queues;
   entity canteenoccupancies as projection on data.CANTEENOCCUPANCIES;
   entity queuelengths as projection on data.QUEUELENGTHS;
   entity user as projection on data.Users;
+  entity analyticsHours as projection on data.analyticsHours;
+  entity analyticsDays as projection on data.analyticsDays;
 }

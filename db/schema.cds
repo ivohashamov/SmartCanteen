@@ -4,8 +4,8 @@ using { cuid } from '@sap/cds/common';
 entity Canteens {
     key ID : Integer;
     name : String; //e.g. msg global canteen
-    openingTime : Time default '11:00:00'; //important for analyzing e.g. average occupancy
-    closingTime : Time default '15:00:00';
+    openingTime : Time; //important for analyzing e.g. average occupancy
+    closingTime : Time;
     street : String;
     streetNumber : String; //int?
     postalCode: String; //int?
@@ -17,24 +17,6 @@ entity Queues {
     description : String;
     canteen : Association to Canteens;
 }
-
-/** 
- * entity Tables {
-    key ID : Integer;
-    description : String;
-    numberOfSeats : Integer;
-    tableHorizontal : Boolean; // maybe not ideal - any ideas? -> was my idea to allocate the seats at the tables (see also entity Seats)
-    tableVertical : Boolean; // maybe not ideal - any ideas? -> was my idea to allocate the seats at the tables (see also entity Seats)
-    canteen : Association to Canteens;
-}
-
-entity Seats {
-    key ID : Integer;
-    tablePositionRow : Integer;
-    tablePositionColumn : Integer;
-    table : Association to Tables;
-}
- * */
 
 entity Users : cuid {
     name : String;
@@ -55,8 +37,8 @@ entity CANTEENOCCUPANCIES : cuid {
         w : String;
         h : String;
         };
-    weekday : String; //Should by retrieved by timestamp usually
-    hour : Integer;
+    weekday : String;
+    hour : String;
 }
 
 entity QUEUELENGTHS : cuid {
@@ -69,30 +51,46 @@ entity QUEUELENGTHS : cuid {
         w : String;
         h : String;
         };
-    weekday : String; //Should by retrieved by timestamp usually
-    hour : Integer;
+    weekday : String;
+    hour : String;
 }
 
 /** Analytics data */
-/** maybe better solution in the future */
-/** cql queries -- SQL style */
 
-/** entity occupanciesAVGhours as select from CANTEENOCCUPANCIES {*};
-
-entity occupanciesTotalAVG as select from CANTEENOCCUPANCIES {
-    round(average(count),2) as average
-} group by entity.ID;
-
-
-entity occupanciesAVGweekdaysPerHour : cuid {
+entity analyticsHours : cuid {
     date : Timestamp;
     canteen : Association to Canteens;
-    /** Providing Analytics data of the respective opening hour of the canteen */
-    /** data : many {
-        _11 : Integer;
-        _12 : Integer;
-        _13 : Integer;
-        _14 : Integer;
-        _15 : Integer;
-        };
-} */
+    data : array of { 
+        hour: String;
+        value: Integer;
+        }
+    };
+
+entity analyticsDays : cuid {
+    date : Timestamp;
+    canteen : Association to Canteens;
+    data : array of { 
+        day : String;
+        hour: String;
+        value: Integer;
+        }
+    };
+
+
+/** 
+ * entity Tables {
+    key ID : Integer;
+    description : String;
+    numberOfSeats : Integer;
+    tableHorizontal : Boolean; // maybe not ideal - any ideas? -> was my idea to allocate the seats at the tables (see also entity Seats)
+    tableVertical : Boolean; // maybe not ideal - any ideas? -> was my idea to allocate the seats at the tables (see also entity Seats)
+    canteen : Association to Canteens;
+}
+
+entity Seats {
+    key ID : Integer;
+    tablePositionRow : Integer;
+    tablePositionColumn : Integer;
+    table : Association to Tables;
+}
+ * */
