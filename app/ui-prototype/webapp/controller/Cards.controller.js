@@ -120,7 +120,7 @@ sap.ui.define([
             var currentDate = new Date()
             currentWeekday = currentDate.getDay()
             this.updatePastAnalyticsCard(Object.keys(weekdays).find(key => weekdays[key] === currentWeekday))
-            var vizFrame = this.getView().byId("idVizFrame2")
+            var vizFrame = this.getView().byId("vizFrameWeekly")
             vizFrame.setVizProperties({
                 plotArea: {
                     primaryScale: {

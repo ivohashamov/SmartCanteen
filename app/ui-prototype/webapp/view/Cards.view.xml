@@ -17,23 +17,17 @@
                 <f:layout>
                     <f:GridContainerSettings rowSize="0rem" columnSize="20rem" gap="1rem" />
                 </f:layout>
-                
+
                 <!--Canteen: Current occupany Canteen-->
                 <f:Card id="CurrentOccupancyControl" class="sapUIMediumMargin" width="300px">
                     <f:header>
                         <card:Header title="Canteen: Current Occupancy" />
                     </f:header>
                     <f:content>
-                        <VBox height="80px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
-                            <HBox justifyContent="flex-end">
-                                <HBox width="190px">
-                                    <Label class="redLabel" text='{OccupiedTables>/count} persons in canteen' />
-                                </HBox>
-                                <HBox justifyContent="flex-end">
-                                    <Image src="images/foodIcon.jpeg" width="70px" />
-                                </HBox>
-                            </HBox>
-                        </VBox>
+                        <HBox class="sapUiSmallMargin" height="80px">
+                            <Label class="redLabel" text='{OccupiedTables>/count} persons in canteen' />
+                            <Image class="sapUiMediumMarginBegin" src="images/foodIcon.jpeg" width="70px" />
+                        </HBox>
                     </f:content>
                 </f:Card>
 
@@ -43,33 +37,29 @@
                         <card:Header title="Canteen: Available seats" />
                     </f:header>
                     <f:content>
-                        <VBox height="80px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
-                            <HBox justifyContent="flex-end">
-                                <VBox width="190px">
-                                    <Label
-                                        class="redLabel"
-                                        text="{
+                        <HBox class="sapUiSmallMargin" height="80px">
+                            <VBox width="190px">
+                                <Label
+                                    class="redLabel"
+                                    text="{
                                         parts: [
                                             {path:'TotalTables>/capacity'}, 
                                             {path:'OccupiedTables>/count'}],
                                         formatter: '.formatter.substraction'
                                         } / {TotalTables>/capacity} free seats"
-                                    />
-                                    <ProgressIndicator
-                                        percentValue="{
+                                />
+                                <ProgressIndicator
+                                    percentValue="{
                                         parts: [
                                             {path:'OccupiedTables>/count'}, 
                                             {path:'TotalTables>/capacity'}],
                                         formatter: '.formatter.division100AndSubtract'
                                         }"
-                                        showValue="false"
-                                    />
-                                </VBox>
-                                <HBox justifyContent="flex-end">
-                                    <Image src="images/chairIcon.png" width="50px" />
-                                </HBox>
-                            </HBox>
-                        </VBox>
+                                    showValue="false"
+                                />
+                            </VBox>
+                            <Image class="sapUiMediumMarginBegin" src="images/chairIcon.png" width="50px" />
+                        </HBox>
                     </f:content>
                 </f:Card>
 
@@ -95,41 +85,28 @@
                 <!--Normal per day Occupancy-->
                 <f:Card class="sapUIMediumMargin" width="610px" height="333px">
                     <f:layoutData>
-						<f:GridContainerItemLayoutData columns="2" />
-					</f:layoutData>
+                        <f:GridContainerItemLayoutData columns="2" />
+                    </f:layoutData>
                     <f:header>
                         <card:Header title="Canteen: Todays Occupancy" />
                     </f:header>
                     <f:content>
-                        <VBox height="80px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
-                            <HBox justifyContent="flex-end">
-                                <VBox width="190px">
-                                    <viz:VizFrame id="idVizFrame" height="225px" width="580px" busy="false" 
-                                    busyIndicatorDelay="1000" visible="true" uiConfig="{ 'applicationSet': 'fiori' }" 
-                                    vizType="column" legendVisible="true" title="">
-                                        <viz:dataset>
-                                            <viz.data:FlattenedDataset data="{a1>/value}">
-                                                <viz.data:dimensions>
-                                                    <viz.data:DimensionDefinition name="Hour" value="{hour}:00" />
-                                                </viz.data:dimensions>
-                                                <viz.data:measures>
-                                                    <viz.data:MeasureDefinition group="1" name="Occupancy" value="{averageCount}" />
-                                                    <!--<viz.data:MeasureDefinition group="1" name="Cost" value="{Cost}" />
-                                <viz.data:MeasureDefinition group="1" name="Units Sold" value="{Units Sold}" />-->
-                                                </viz.data:measures>
-                                            </viz.data:FlattenedDataset>
-                                        </viz:dataset>
-                                        <viz:feeds>
-                                            <viz.feeds:FeedItem id="valueAxisFeed" uid="valueAxis" type="Measure" values="Occupancy" />
-                                            <!--<viz.feeds:FeedItem id="valueAxisFeed2" uid="valueAxis" type="Measure" values="Cost" />
-                        <viz.feeds:FeedItem id="value3" uid="primaryValues" type="Dimension" values="Units Sold" />-->
-                                            <viz.feeds:FeedItem id="categoryAxisFeed" uid="categoryAxis" type="Dimension" values="Hour" />
-                                        </viz:feeds>
-                                    </viz:VizFrame>
-                                </VBox>
-                                
-                            </HBox>
-                        </VBox>
+                        <viz:VizFrame id="idVizFrame" height="225px" width="580px" vizType="column">
+                            <viz:dataset>
+                                <viz.data:FlattenedDataset data="{a1>/value}">
+                                    <viz.data:dimensions>
+                                        <viz.data:DimensionDefinition name="Hour" value="{hour}:00" />
+                                    </viz.data:dimensions>
+                                    <viz.data:measures>
+                                        <viz.data:MeasureDefinition name="Occupancy" value="{averageCount}" />
+                                    </viz.data:measures>
+                                </viz.data:FlattenedDataset>
+                            </viz:dataset>
+                            <viz:feeds>
+                                <viz.feeds:FeedItem id="valueAxisFeed" uid="valueAxis" type="Measure" values="Occupancy" />
+                                <viz.feeds:FeedItem id="categoryAxisFeed" uid="categoryAxis" type="Dimension" values="Hour" />
+                            </viz:feeds>
+                        </viz:VizFrame>
                     </f:content>
                 </f:Card>
 
@@ -192,43 +169,32 @@
                 <!--Average 7 days Occupancy-->
                 <f:Card class="sapUIMediumMargin" width="610px" height="333px">
                     <f:layoutData>
-						<f:GridContainerItemLayoutData columns="2" />
-					</f:layoutData>
+                        <f:GridContainerItemLayoutData columns="2" />
+                    </f:layoutData>
                     <f:header>
                         <card:Header title="Canteen: Typical Occupancy on {weekday>/day}" />
                     </f:header>
                     <f:content>
                         <VBox height="80px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
-                            <HBox justifyContent="flex-end">
-                                <VBox width="190px">
-                                    <viz:VizFrame id="idVizFrame2" height="225px" width="580px" busy="false" 
-                                    busyIndicatorDelay="1000" visible="true" uiConfig="{ 'applicationSet': 'fiori' }" 
-                                    vizType="column" legendVisible="true" title="">
-                                        <viz:dataset>
-                                            <viz.data:FlattenedDataset data="{a2>/value}">
-                                                <viz.data:dimensions>
-                                                    <viz.data:DimensionDefinition name="Hour" value="{hour}:00" />
-                                                </viz.data:dimensions>
-                                                <viz.data:measures>
-                                                    <viz.data:MeasureDefinition group="1" name="Occupancy" value="{averageCount}" />
-                                                    <!--<viz.data:MeasureDefinition group="1" name="Cost" value="{Cost}" />
-                                <viz.data:MeasureDefinition group="1" name="Units Sold" value="{Units Sold}" />-->
-                                                </viz.data:measures>
-                                            </viz.data:FlattenedDataset>
-                                        </viz:dataset>
-                                        <viz:feeds>
-                                            <viz.feeds:FeedItem id="valueAxisFeed3" uid="valueAxis" type="Measure" values="Occupancy" />
-                                            <!--<viz.feeds:FeedItem id="valueAxisFeed2" uid="valueAxis" type="Measure" values="Cost" />
-                        <viz.feeds:FeedItem id="value3" uid="primaryValues" type="Dimension" values="Units Sold" />-->
-                                            <viz.feeds:FeedItem id="categoryAxisFeed3" uid="categoryAxis" type="Dimension" values="Hour" />
-                                        </viz:feeds>
-                                    </viz:VizFrame>
-                                </VBox>
-                                
-                            </HBox>
+                            <viz:VizFrame id="vizFrameWeekly" height="225px" width="580px" vizType="column">
+                                <viz:dataset>
+                                    <viz.data:FlattenedDataset data="{a2>/value}">
+                                        <viz.data:dimensions>
+                                            <viz.data:DimensionDefinition name="Hour" value="{hour}:00" />
+                                        </viz.data:dimensions>
+                                        <viz.data:measures>
+                                            <viz.data:MeasureDefinition name="Occupancy" value="{averageCount}" />
+                                        </viz.data:measures>
+                                    </viz.data:FlattenedDataset>
+                                </viz:dataset>
+                                <viz:feeds>
+                                    <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Occupancy" />
+                                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Hour" />
+                                </viz:feeds>
+                            </viz:VizFrame>
                             <HBox justifyContent="End" width="560px">
-                                <Button text="Before" press=".onBeforePress"/>
-                                <Button text="Next" press=".onNextPress"/>
+                                <Button text="Before" press=".onBeforePress" />
+                                <Button text="Next" press=".onNextPress" />
                             </HBox>
                         </VBox>
                     </f:content>
