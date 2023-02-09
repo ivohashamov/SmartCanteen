@@ -11,7 +11,7 @@
     xmlns:viz.data="sap.viz.ui5.data"
     xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
 >
-    <Panel width="auto">
+    <Panel id="cardsPage" width="auto">
         <content>
             <f:GridContainer>
                 <f:layout>
@@ -19,7 +19,7 @@
                 </f:layout>
 
                 <!--Canteen: Current occupany Canteen-->
-                <f:Card id="CurrentOccupancyControl" class="sapUIMediumMargin" width="300px">
+                <f:Card id="card1" class="sapUIMediumMargin" width="300px" visible="{settingsModel>/card1}">
                     <f:header>
                         <card:Header title="Canteen: Current Occupancy" />
                     </f:header>
@@ -32,7 +32,7 @@
                 </f:Card>
 
                 <!--Live Occupancy Tables-->
-                <f:Card class="sapUIMediumMargin" width="300px">
+                <f:Card class="sapUIMediumMargin" width="300px" visible="{settingsModel>/card2}">
                     <f:header>
                         <card:Header title="Canteen: Available seats" />
                     </f:header>
@@ -64,7 +64,7 @@
                 </f:Card>
 
                 <!--Queue: Live Queue length-->
-                <f:Card id="LiveQueueLengthControl" class="sapUIMediumMargin" width="300px">
+                <f:Card id="LiveQueueLengthControl" class="sapUIMediumMargin" width="300px" visible="{settingsModel>/card3}">
                     <f:header>
                         <card:Header title="Queue: Live length" />
                     </f:header>
@@ -83,7 +83,7 @@
                 </f:Card>
 
                 <!--Normal per day Occupancy-->
-                <f:Card class="sapUIMediumMargin" width="610px" height="333px">
+                <f:Card class="sapUIMediumMargin" width="610px" height="333px" visible="{settingsModel>/card4}">
                     <f:layoutData>
                         <f:GridContainerItemLayoutData columns="2" />
                     </f:layoutData>
@@ -111,7 +111,7 @@
                 </f:Card>
 
                 <!--Queue: Estimated Waiting time-->
-                <f:Card class="sapUIMediumMargin" width="300px">
+                <f:Card class="sapUIMediumMargin" width="300px" visible="{settingsModel>/card5}">
                     <f:header>
                         <card:Header title="Queue: Estimated wait time" />
                     </f:header>
@@ -139,8 +139,7 @@
                 </f:Card>
 
                 <!--Recommended Arrival Time-->
-                <!--Not implemented-->
-                <f:Card class="sapUIMediumMargin" width="300px">
+                <f:Card class="sapUIMediumMargin" width="300px" visible="{settingsModel>/card6}">
                     <f:header>
                         <card:Header title="Recommended Arrival Time" />
                     </f:header>
@@ -167,7 +166,7 @@
                 </f:Card>
 
                 <!--Average 7 days Occupancy-->
-                <f:Card class="sapUIMediumMargin" width="610px" height="333px">
+                <f:Card class="sapUIMediumMargin" width="610px" height="333px" visible="{settingsModel>/card7}">
                     <f:layoutData>
                         <f:GridContainerItemLayoutData columns="2" />
                     </f:layoutData>
@@ -199,13 +198,6 @@
                         </VBox>
                     </f:content>
                 </f:Card>
-
-                <!--Past per day Occupancy
-                <w:Card manifest="{manifests>/analytical2}" action="onAction">
-                    <w:layoutData>
-                        <f:GridContainerItemLayoutData minRows="2" columns="2" />
-                    </w:layoutData>
-                </w:Card>-->
             </f:GridContainer>
         </content>
     </Panel>

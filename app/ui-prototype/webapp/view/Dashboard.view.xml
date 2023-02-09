@@ -48,21 +48,21 @@
                 <pages>
                     <Page id="page1" showHeader="false">
                         <content>
-                            <mvc:XMLView viewName="ns.uiprototype.view.Cards"/>
+                            <mvc:XMLView id="cardsView" viewName="ns.uiprototype.view.Cards"/>
                         </content>
                     </Page>
                     <Page id="page2" title="Smart Canteen">
                         <content>
                             <Panel headerText="Dashboard Items" class="sapUIResponsiveMargin" width="auto">
                                 <content>
-                                    <!--   <Button text="test2" class="sapUISmallMarginEnd" press=".onButtonPressed" />-->
-                                    <CheckBox id="myCheckBox" text="Live queue Length" selected="true" select="onCheckboxSelected" />
-                                    <CheckBox id="myCheckBox1" text="Wait time" selected="true" select="onCheckboxSelected"  />
-                                    <CheckBox id="myCheckBox2" text="Available seats" selected="true" select="onCheckboxSelected" />
-                                    <CheckBox id="myCheckBox3" text="Recommended Arrival Time" selected="true" select="onCheckboxSelected"  />
-                                    <CheckBox id="myCheckBox4" text="Occupancy Today" selected="true" select="onCheckboxSelected"  />
-                                    <CheckBox id="myCheckBox5" text="Current Occupancy" selected="true" select="onCheckboxSelected" />
-                                    <CheckBox id="myCheckBox6" text="Todays Occupancy" selected="true" select="onCheckboxSelected"  />
+                                    <CheckBox id="myCheckBox" text="Canteen: Current Occupancy" selected="true" select="onCheckboxSelected" />
+                                    <CheckBox id="myCheckBox1" text="Canteen: Available seats" selected="true" select="onCheckboxSelected"  />
+                                    <CheckBox id="myCheckBox3" text="Canteen: Todays Occupancy " selected="true" select="onCheckboxSelected"  />
+                                    <CheckBox id="myCheckBox6" text="Canteen: Typical Occupancy" selected="true" select="onCheckboxSelected"  />
+                                    <CheckBox id="myCheckBox2" text="Queue: Live length" selected="true" select="onCheckboxSelected" />
+                                    <CheckBox id="myCheckBox4" text="Queue: Estimated wait time" selected="true" select="onCheckboxSelected"  />
+                                    <CheckBox id="myCheckBox5" text="Recommended Arrival Time" selected="true" select="onCheckboxSelected" />
+                                    
                                 </content>
                             </Panel>
                         </content>
