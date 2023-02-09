@@ -55,13 +55,13 @@
                         <content>
                             <Panel headerText="Dashboard Items" class="sapUIResponsiveMargin" width="auto">
                                 <content>
-                                    <CheckBox id="myCheckBox" text="Canteen: Current Occupancy" selected="true" select="onCheckboxSelected" />
-                                    <CheckBox id="myCheckBox1" text="Canteen: Available seats" selected="true" select="onCheckboxSelected"  />
-                                    <CheckBox id="myCheckBox3" text="Canteen: Todays Occupancy " selected="true" select="onCheckboxSelected"  />
-                                    <CheckBox id="myCheckBox6" text="Canteen: Typical Occupancy" selected="true" select="onCheckboxSelected"  />
-                                    <CheckBox id="myCheckBox2" text="Queue: Live length" selected="true" select="onCheckboxSelected" />
-                                    <CheckBox id="myCheckBox4" text="Queue: Estimated wait time" selected="true" select="onCheckboxSelected"  />
-                                    <CheckBox id="myCheckBox5" text="Recommended Arrival Time" selected="true" select="onCheckboxSelected" />
+                                    <CheckBox text="Canteen: Current Occupancy" selected="{settingsModel>/card1}" select="onCheckboxSelected" />
+                                    <CheckBox text="Canteen: Available seats" selected="{settingsModel>/card2}" select="onCheckboxSelected"  />
+                                    <CheckBox text="Canteen: Todays Occupancy " selected="{settingsModel>/card4}" select="onCheckboxSelected"  />
+                                    <CheckBox text="Canteen: Typical Occupancy" selected="{settingsModel>/card7}" select="onCheckboxSelected"  />
+                                    <CheckBox text="Queue: Live length" selected="{settingsModel>/card3}" select="onCheckboxSelected" />
+                                    <CheckBox text="Queue: Estimated wait time" selected="{settingsModel>/card5}" select="onCheckboxSelected"  />
+                                    <CheckBox text="Recommended Arrival Time" selected="{settingsModel>/card6}" select="onCheckboxSelected" />
                                     
                                 </content>
                             </Panel>
