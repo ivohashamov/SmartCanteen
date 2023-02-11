@@ -11,9 +11,7 @@ service canteenService @(path:'/API_front') {
   @readonly entity analyticsHours as projection on data.analyticsHours; // at least for now coordinates excluded
   @readonly entity analyticsDays as projection on data.analyticsDays;
 
-
-
-  @readonly entity users as projection on data.Users; // currently not used afaik
+  @readonly entity users as projection on data.Users; // currently not used
   @readonly entity queue as projection on data.Queues; // currently not used
   @readonly entity canteen as projection on data.Canteens; // currently not used
   

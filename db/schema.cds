@@ -2,46 +2,46 @@ namespace smartcanteen.db;
 using { cuid } from '@sap/cds/common';
 
 entity Canteens {
-    key ID : Integer;
-    name : String; //e.g. msg global canteen
-    openingTime : Time; //important for analyzing e.g. average occupancy
-    closingTime : Time;
-    street : String;
-    streetNumber : String; //int?
-    postalCode: String; //int?
-    capacity : Integer default 20;
-} //entity Canteens for covering the case that the solution is used with several canteens
+    key ID : Integer; // unique ID - primary key
+    name : String; // e.g. msg global canteen
+    openingTime : Time; // opening time of the canteen
+    closingTime : Time; // closing time of the canteen
+    street : String; // street (address) of the canteen
+    streetNumber : String; // streetnumber (address) of the canteen
+    postalCode: String; // postal code (address of the canteen)
+    capacity : Integer; // max capacity of the canteen
+}
 
 entity Queues {
-    key ID : Integer;
-    description : String;
-    canteen : Association to Canteens;
+    key ID : Integer; // unique ID - primary key
+    description : String; // e.g. queue at desk for salads
+    canteen : Association to Canteens; // defines association (1:n) to entity Canteens
 }
 
 entity Users : cuid {
-    name : String;
-    mail : String;
-    password : String; //we need to think about that -- hash etc. TO-DO
-    isManager : Boolean;
+    name : String; // name of the user e.g. Christian
+    mail : String; // mail address of the user e.g. christian@smartcanteen.com
+    password : String; // password for login - currently not hashed or encrypted
+    isManager : Boolean; // defines if a user is a so called manager - managers could have access to additional features
 }
 
 /** Occupancy data */
 
-entity CANTEENOCCUPANCIES : cuid {
-    date : Timestamp;
-    count : Integer;
-    entity : Association to Canteens;
-    coordinates : many {
+entity CANTEENOCCUPANCIES : cuid { // cuid assigns automaticalls a unique ID of type UUID to the entity when created
+    date : Timestamp; // time and date of when the occupancy was registered 
+    count : Integer; // number of persons detected
+    entity : Association to Canteens; // defines association (1:n) to entity Canteens
+    coordinates : many { // defines the coordinates of every person that was detected, number of objects therefore corresponds to the number of ppersons detected (count)
         x : String;
         y : String;
         w : String;
         h : String;
         };
-    weekday : String;
-    hour : String;
+    weekday : String; // filled in by business logic (analytics) - weekday (e.g. monday, tuesday, ...)
+    hour : String; // filled in by business logic (analytics) - hour (e.g. 13 if date is 1 PM)
 }
 
-entity QUEUELENGTHS : cuid {
+entity QUEUELENGTHS : cuid { 
     date : Timestamp;
     count : Integer;
     entity : Association to Queues;
