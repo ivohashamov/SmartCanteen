@@ -172,14 +172,22 @@ sap.ui.define([
             var query2 = jQuery.ajax({
                 type: "GET", 
                 contentType: "application/json",
-                url:"http://localhost:4004/API_front/canteenOccupancies?$apply=filter(entity_ID eq 1 and weekday eq '"+weekday+"')/groupby((hour),aggregate(count with average as averageCount))",
+                url:"http://localhost:4004/API_front/analyticsDays?$orderby=date desc&$filter=canteen_ID eq 1&$top=1",
                 success: function(data, status) {
                     if(data["value"].length > 0)
                     {
                         for (let i = 0; i< data["value"].length; i++) {
                             data["value"][i]["averageCount"] = Math.floor(data["value"][i]["averageCount"])
                         }
-                        oOccupiedTablesModel.setData(data)
+                        var data2 = []
+                        for (let date in data["value"][0]["data"]) {
+                            if(data["value"][0]["data"][date]["day"]==weekday)
+                            {
+                                data2.push({hour:data["value"][0]["data"][date]["hour"], averageCount:data["value"][0]["data"][date]["value"]})
+                            }
+                        }
+                        data2 = {value:data2}
+                        oOccupiedTablesModel.setData(data2)
                     }
                 }
             })

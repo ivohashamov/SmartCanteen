@@ -89,7 +89,7 @@
                             <viz:dataset>
                                 <viz.data:FlattenedDataset data="{a1>/value}">
                                     <viz.data:dimensions>
-                                        <viz.data:DimensionDefinition name="Hour" value="{hour}:00" />
+                                        <viz.data:DimensionDefinition name="Hour" value="{hour}" />
                                     </viz.data:dimensions>
                                     <viz.data:measures>
                                         <viz.data:MeasureDefinition name="Occupancy" value="{averageCount}" />
@@ -155,7 +155,7 @@
                                 <viz:dataset>
                                     <viz.data:FlattenedDataset data="{a2>/value}">
                                         <viz.data:dimensions>
-                                            <viz.data:DimensionDefinition name="Hour" value="{hour}:00" />
+                                            <viz.data:DimensionDefinition name="Hour" value="{hour}" />
                                         </viz.data:dimensions>
                                         <viz.data:measures>
                                             <viz.data:MeasureDefinition name="Occupancy" value="{averageCount}" />
