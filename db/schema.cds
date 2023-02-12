@@ -2,21 +2,80 @@ namespace smartcanteen.db;
 using { cuid } from '@sap/cds/common';
 
 entity Canteens {
-    key ID : Integer;
-    name : String; //e.g. msg global canteen
-    openingTime : Time default '11:00:00'; //important for analyzing e.g. average occupancy
-    closingTime : Time default '15:00:00';
-    street : String;
-    streetNumber : String; //int?
-    postalCode: String; //int?
-    capacity : Integer default 20;
-} //entity Canteens for covering the case that the solution is used with several canteens
+    key ID : Integer; // unique ID - primary key
+    name : String; // e.g. msg global canteen
+    openingTime : Time; // opening time of the canteen
+    closingTime : Time; // closing time of the canteen
+    street : String; // street (address) of the canteen
+    streetNumber : String; // streetnumber (address) of the canteen
+    postalCode: String; // postal code (address of the canteen)
+    capacity : Integer; // max capacity of the canteen
+}
 
 entity Queues {
-    key ID : Integer;
-    description : String;
-    canteen : Association to Canteens;
+    key ID : Integer; // unique ID - primary key
+    description : String; // e.g. queue at desk for salads
+    canteen : Association to Canteens; // defines association (1:n) to entity Canteens
 }
+
+entity Users : cuid {
+    name : String; // name of the user e.g. Christian
+    mail : String; // mail address of the user e.g. christian@smartcanteen.com
+    password : String; // password for login - currently not hashed or encrypted
+    isManager : Boolean; // defines if a user is a so called manager - managers could have access to additional features
+}
+
+/** Occupancy data */
+
+entity CANTEENOCCUPANCIES : cuid { // cuid assigns automaticalls a unique ID of type UUID to the entity when created
+    date : Timestamp; // time and date of when the occupancy was registered 
+    count : Integer; // number of persons detected
+    entity : Association to Canteens; // defines association (1:n) to entity Canteens
+    coordinates : many { // defines the coordinates of every person that was detected, number of objects therefore corresponds to the number of ppersons detected (count)
+        x : String;
+        y : String;
+        w : String;
+        h : String;
+        };
+    weekday : String; // filled in by business logic (analytics) - weekday (e.g. monday, tuesday, ...)
+    hour : String; // filled in by business logic (analytics) - hour (e.g. 13 if date is 1 PM)
+}
+
+entity QUEUELENGTHS : cuid { 
+    date : Timestamp;
+    count : Integer;
+    entity : Association to Queues;
+    coordinates : many {
+        x : String;
+        y : String;
+        w : String;
+        h : String;
+        };
+    weekday : String;
+    hour : String;
+}
+
+/** Analytics data */
+
+entity analyticsHours : cuid {
+    date : Timestamp;
+    canteen : Association to Canteens;
+    data : array of { 
+        hour: String;
+        value: Integer;
+        }
+    };
+
+entity analyticsDays : cuid {
+    date : Timestamp;
+    canteen : Association to Canteens;
+    data : array of { 
+        day : String;
+        hour: String;
+        value: Integer;
+        }
+    };
+
 
 /** 
  * entity Tables {
@@ -35,64 +94,3 @@ entity Seats {
     table : Association to Tables;
 }
  * */
-
-entity Users : cuid {
-    name : String;
-    mail : String;
-    password : String; //we need to think about that -- hash etc. TO-DO
-    isManager : Boolean;
-}
-
-/** Occupancy data */
-
-entity CANTEENOCCUPANCIES : cuid {
-    date : Timestamp;
-    count : Integer;
-    entity : Association to Canteens;
-    coordinates : many {
-        x : String;
-        y : String;
-        w : String;
-        h : String;
-        };
-    weekday : String; //Should by retrieved by timestamp usually
-    hour : Integer;
-}
-
-entity QUEUELENGTHS : cuid {
-    date : Timestamp;
-    count : Integer;
-    entity : Association to Queues;
-    coordinates : many {
-        x : String;
-        y : String;
-        w : String;
-        h : String;
-        };
-    weekday : String; //Should by retrieved by timestamp usually
-    hour : Integer;
-}
-
-/** Analytics data */
-/** maybe better solution in the future */
-/** cql queries -- SQL style */
-
-/** entity occupanciesAVGhours as select from CANTEENOCCUPANCIES {*};
-
-entity occupanciesTotalAVG as select from CANTEENOCCUPANCIES {
-    round(average(count),2) as average
-} group by entity.ID;
-
-
-entity occupanciesAVGweekdaysPerHour : cuid {
-    date : Timestamp;
-    canteen : Association to Canteens;
-    /** Providing Analytics data of the respective opening hour of the canteen */
-    /** data : many {
-        _11 : Integer;
-        _12 : Integer;
-        _13 : Integer;
-        _14 : Integer;
-        _15 : Integer;
-        };
-} */

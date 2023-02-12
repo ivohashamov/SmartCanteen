@@ -1,2 +1,0 @@
-- service returning estimated waiting time at a queue -> service
-- service returning estimated occupancies for a week -> service/ML/analytics

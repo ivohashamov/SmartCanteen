@@ -2,7 +2,7 @@
 	displayBlock="true" xmlns="sap.m">
 	<App id="app">
 		<pages>
-			<Page title="{i18n>title}" showHeader="false" class="w3-backGround" enableScrolling="false">
+			<Page showHeader="false" class="w3-backGround" enableScrolling="false">
 				<content>
 					<VBox class="w3-row w3-display-middle w3-card-1">
 						<Text text="Smart Canteen.msg" class="w3-xxlarge animated fadeInUp titleStyle"/>
