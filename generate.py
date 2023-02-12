@@ -21,7 +21,7 @@ canteenWriter = csv.writer(canteenCsv, delimiter=';')
 queueCsv = open(QUEUE_CSV, 'w')
 queueWriter = csv.writer(queueCsv, delimiter=';')
 
-header = ['ID', 'date', 'count', 'entity_ID', 'coordinates', 'weekdays', 'hour']
+header = ['ID', 'date', 'count', 'entity_ID', 'coordinates', 'weekday', 'hour']
 
 canteenWriter.writerow(header)
 queueWriter.writerow(header)
