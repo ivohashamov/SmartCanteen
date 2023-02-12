@@ -21,7 +21,7 @@ canteenWriter = csv.writer(canteenCsv, delimiter=';')
 queueCsv = open(QUEUE_CSV, 'w')
 queueWriter = csv.writer(queueCsv, delimiter=';')
 
-header = ['ID', 'date', 'count', 'entity_ID', 'coordinates']
+header = ['ID', 'date', 'count', 'entity_ID', 'coordinates', 'weekdays', 'hour']
 
 canteenWriter.writerow(header)
 queueWriter.writerow(header)
@@ -56,6 +56,7 @@ for date in dates:
     for minutes in range(OPENING_TIME_IN_MINUTES + 1):
         dateInDateTimeObject = datetime.datetime.strptime(date, DATE_FORMAT)
         dateWithMinuteIncrement = dateInDateTimeObject + datetime.timedelta(minutes=minutes)
+        hour = dateWithMinuteIncrement.hour
 
         if (minutes < 40):
             canteenOccupancy = random.randrange(LOW_CAPACITY)
@@ -66,11 +67,13 @@ for date in dates:
         else:
             canteenOccupancy = random.randrange(MIDDLE_CAPACITY, HIGH_CAPACITY)
             queueOccupancy = random.randrange(MIDDLE_CAPACITY, HIGH_CAPACITY)
+
+        weekday = weekdays[dateInDateTimeObject.weekday()]
         
         calculatedDateString = datetime.datetime.strftime(dateWithMinuteIncrement, DATE_FORMAT)
 
-        canteenRow = [id, calculatedDateString, canteenOccupancy, ENTITY_ID, COORDINATES]
-        queueRow = [id, calculatedDateString, queueOccupancy, ENTITY_ID, COORDINATES]
+        canteenRow = [id, calculatedDateString, canteenOccupancy, ENTITY_ID, COORDINATES, weekday, hour]
+        queueRow = [id, calculatedDateString, queueOccupancy, ENTITY_ID, COORDINATES, weekday, hour]
 
         canteenWriter.writerow(canteenRow)
         queueWriter.writerow(queueRow)
